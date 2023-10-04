@@ -6,6 +6,18 @@ export class Header extends AbstractDiv {
         super()
     }
 
+    activeElement() {
+        if(location.hash == '#cryptocurrencies') {
+            return this.el.querySelector('.menu__item_cryptocurrencies').classList.add('menu__item_active')
+        } else if(location.hash == '') {
+            return this.el.querySelector('.menu__item_cryptocurrencies').classList.add('menu__item_active')
+        } else if(location.hash == '#portfolio') {
+            return this.el.querySelector('.menu__item_portfolio').classList.add('menu__item_active')
+        } else if(location.hash == '#about') {
+            return this.el.querySelector('.menu__item_about').classList.add('menu__item_active')
+        } return
+    }
+
     render() {
         this.el.classList.add('header');
         this.el.innerHTML = `
@@ -14,9 +26,9 @@ export class Header extends AbstractDiv {
             <img src="../../static/logo.svg" /> 
         </a>
         <div class="header__menu">
-            <div class="menu__item_cover"><a class="menu__item" href="#cryptocurrencies">Cryptocurrencies</a></div>
-            <div class="menu__item_cover"><a class="menu__item" href="#portfolio">Portfolio</a></div>
-            <div class="menu__item_cover"><a class="menu__item" href=#about">About</a></div>
+            <div class="menu__item_cover"><a class="menu__item menu__item_cryptocurrencies" href="#cryptocurrencies">Cryptocurrencies</a></div>
+            <div class="menu__item_cover"><a class="menu__item menu__item_portfolio" href="#portfolio">Portfolio</a></div>
+            <div class="menu__item_cover"><a class="menu__item menu__item_about" href="#about">About</a></div>
         </div>
         <a class="header__user menu__item">
             <img src="../../static/user.svg"/>
@@ -24,8 +36,12 @@ export class Header extends AbstractDiv {
 
         </div>
         <hr/>
+        <div class="tests">
         <div class="test"></div>
-        `
-        return this.el
+        <div class="test2"></div>
+        </div>
+        `;
+        this.activeElement();
+        return this.el;
     }
 }

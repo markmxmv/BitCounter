@@ -4,10 +4,10 @@
     align-items: center;
     justify-content: space-between;
     height: 88px;
-    /* border-top: 1px solid rgba(255, 255, 255, 0.30);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.30); */
     border-spacing: 0;
     padding: 0 50px;
+    background: linear-gradient(90deg, rgba(35, 35, 35, 0.66) 0%, rgba(0, 0, 0, 0.66) 100%);
+    backdrop-filter: blur(25px);
 }
 
 .header__logo {
@@ -43,6 +43,10 @@
 
 }
 
+.menu__item_active {
+    color: #4ECB71;
+}
+
 .menu__item_cover {
     height: 100%;
 }
@@ -55,12 +59,26 @@
     height: 40px;
 }
 
+.tests {
+    display: flex;
+}
+
 .test {
     height: 400vh;
-    width: 20px;
+    width: 25%;
+    background: linear-gradient(90deg, rgba(35, 35, 35, 0.66) 0%, rgba(0, 0, 0, 0.66) 100%);
+    backdrop-filter: blur(25px);
+    border-right: 0.1px solid gray;
+}
+
+.test2 {
+    height: 400vh;
+    width: 75%;
+    background: rgba(0, 0, 0, 0.66);
+    backdrop-filter: blur(25px);
 }
 
 hr {
     width: 100%;
-    border: 0.1px solid rgb(77, 77, 77);
+    border: 0.1px solid gray;
 }
