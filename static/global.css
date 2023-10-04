@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    max-width: 1512px;
+    margin: auto;
+    background: linear-gradient(90deg, rgba(35, 35, 35, 0.66) 0%, rgba(0, 0, 0, 0.66) 100%);
+        backdrop-filter: blur(25px);;
+}
+
+body {
+    background-color: #1e1e1e;
+    background-image: url(./background.png);
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
