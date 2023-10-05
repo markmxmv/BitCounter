@@ -6,6 +6,10 @@ export class AboutView extends AbstractView {
         super();
     }
 
+    destroy() {
+        this.app.innerHTML = '';
+    }
+
     render() {
         this.renderHeader()
     }

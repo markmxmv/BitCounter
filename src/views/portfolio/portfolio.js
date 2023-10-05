@@ -6,6 +6,10 @@ export class PortfolioView extends AbstractView {
         super();
     }
 
+    destroy() {
+        this.app.innerHTML = '';
+    }
+
     render() {
         this.renderHeader()
     }

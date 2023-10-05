@@ -36,9 +36,6 @@ export class Header extends AbstractDiv {
 
         </div>
         <hr/>
-        <div class="tests">
-        <div class="test"></div>
-        <div class="test2"></div>
         </div>
         `;
         this.activeElement();

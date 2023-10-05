@@ -6,8 +6,6 @@
 #root {
     max-width: 1512px;
     margin: auto;
-    /* background: linear-gradient(90deg, rgba(35, 35, 35, 0.66) 0%, rgba(0, 0, 0, 0.66) 100%);
-    backdrop-filter: blur(25px);; */
 }
 
 body {
@@ -17,4 +15,10 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.cryptocurrencies-view {
+    background: linear-gradient(90deg, rgba(35, 35, 35, 0.66) 0%, rgba(0, 0, 0, 0.66) 100%);
+    backdrop-filter: blur(25px);
+    height: 100vh;
 }

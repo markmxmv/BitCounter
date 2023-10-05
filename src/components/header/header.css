@@ -40,7 +40,6 @@
 .menu__item:hover {
     color: #4ECB71;
     border-bottom: 4px solid #4ECB71;
-
 }
 
 .menu__item_active {
@@ -57,25 +56,6 @@
 
 .header__user img {
     height: 40px;
-}
-
-.tests {
-    display: flex;
-}
-
-.test {
-    height: 400vh;
-    width: 25%;
-    background: linear-gradient(90deg, rgba(35, 35, 35, 0.66) 0%, rgba(0, 0, 0, 0.66) 100%);
-    backdrop-filter: blur(25px);
-    border-right: 0.1px solid gray;
-}
-
-.test2 {
-    height: 400vh;
-    width: 75%;
-    background: rgba(0, 0, 0, 0.66);
-    backdrop-filter: blur(25px);
 }
 
 hr {

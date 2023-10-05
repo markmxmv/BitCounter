@@ -25,5 +25,8 @@
     "@rollup/plugin-node-resolve": "^15.2.1",
     "rollup": "^3.29.1",
     "rollup-plugin-import-css": "^3.3.1"
+  },
+  "dependencies": {
+    "lightweight-charts": "^4.1.0"
   }
 }
