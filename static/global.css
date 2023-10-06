@@ -20,5 +20,6 @@ body {
 .cryptocurrencies-view {
     background: linear-gradient(90deg, rgba(35, 35, 35, 0.66) 0%, rgba(0, 0, 0, 0.66) 100%);
     backdrop-filter: blur(25px);
-    height: 100vh;
+    height: calc(100vh - 88px);
+    padding-top: 44px;
 }

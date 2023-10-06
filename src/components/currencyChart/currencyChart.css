@@ -1,0 +1,26 @@
+.cryptocurrencies-view__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cryptocurrencies-chart {
+    width: fit-content;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 44px;
+}
+
+.chart__title {
+    color: #fff;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 30px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 10px;
+    height: fit-content;
+    margin-bottom: 44px;
+}
