@@ -1,7 +1,8 @@
-.cryptocurrencies-view__wrapper {
+.currency-chart__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    height: 390px;
 }
 
 .cryptocurrencies-chart {
@@ -9,7 +10,6 @@
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid gray;
     border-radius: 10px;
-    margin-bottom: 44px;
 }
 
 .chart__title {
@@ -22,5 +22,4 @@
     width: fit-content;
     padding: 10px;
     height: fit-content;
-    margin-bottom: 44px;
 }

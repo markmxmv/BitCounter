@@ -1,4 +1,5 @@
 import { AbstractView } from "../../common/abstractView";
+import { CurrenciesList } from "../../components/currenciesList/currenciesList";
 import { CurrencyChart } from "../../components/currencyChart/currencyChart";
 import { Header } from "../../components/header/header";
 
@@ -15,6 +16,7 @@ export class CryptocurrenciesView extends AbstractView {
         const cryptocurrencies = document.createElement('div');
         cryptocurrencies.classList.add('cryptocurrencies-view')
         cryptocurrencies.append(new CurrencyChart().render());
+        cryptocurrencies.append(new CurrenciesList().render())
         this.app.innerHTML = '';
         this.app.append(cryptocurrencies);
         this.renderHeader();

@@ -1,0 +1,75 @@
+.currencies-list {
+    font-family: 'Inter', sans-serif;
+}
+
+.currencies-list__wrapper {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.currencies-list__left {
+    height: calc(100vh - 88px - 390px);
+    width: 400px;
+    border-right: 0.1px solid gray;
+}
+
+.currencies-list__search {
+    height: 50px;
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 0.1px solid gray;
+    font-weight: 300;
+    font-size: 18px;
+    padding: 20px;
+    color: #fff;
+}
+
+.currencies-list__search::placeholder {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.currencies-list__right {
+    height: calc(100vh - 88px - 390px);
+    width: 100%;
+    overflow: scroll;
+}
+
+.currencies-list__header {
+    height: 30px;
+    width: 100%;
+    border-bottom: 0.1px solid gray;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    
+}
+
+.currencies-list__header__wrapper {
+    height: 100%;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.currency-list__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-bottom: 0.1px solid gray;
+    cursor: pointer;
+}
+
+.currency-list__item:hover {
+    background: rgba(53, 53, 53, 0.3);
+}
+
+.currency-list__item span {
+    color: #fff;
+    font-family: 'Inter';
+    font-weight: 300;
+    margin-left: 20px;
+}

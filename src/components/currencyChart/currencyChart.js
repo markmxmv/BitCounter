@@ -10,7 +10,7 @@ export class CurrencyChart extends AbstractDiv {
     render() {
         this.el.classList.add('currency-chart');
         this.el.innerHTML = `
-        <div class="cryptocurrencies-view__wrapper">
+        <div class="currency-chart__wrapper">
             <div class="chart__title">BTC/USDT</div>
             <div class="cryptocurrencies-chart">
             </div>
