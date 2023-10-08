@@ -7,6 +7,13 @@
     background: rgba(0, 0, 0, 0.3);
 }
 
+.favorites-icon {
+    height: fit-content;
+    width: fit-content;
+    opacity: 0.5;
+    margin: 30px auto;
+}
+
 .currencies-list__left {
     height: calc(100vh - 88px - 390px);
     width: 400px;
@@ -33,7 +40,6 @@
 .currencies-list__right {
     height: calc(100vh - 88px - 390px);
     width: 100%;
-    overflow: scroll;
 }
 
 .currencies-list__header {
@@ -48,23 +54,92 @@
 
 .currencies-list__header__wrapper {
     height: 100%;
-    margin: 0 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
-.currency-list__item {
-    display: flex;
-    align-items: center;
+.currencies-list__header__number {
+    flex: 0.7;
+    text-align: center;
+}
+
+.currencies-list__header__name {
+    flex: 2;
+    text-align: center;
+}
+
+.currencies-list__header__24h {
+    flex: 2;
+    text-align: center;
+}
+
+.currencies-list__header__market-cap {
+    flex: 3;
+    text-align: center;
+}
+
+.currencies-list__header__volume-24h {
+    flex: 3;
+    text-align: center;
+}
+
+.currencies-list__header__price {
+    flex: 2;
+    text-align: center;
+}
+
+.currencies-list__scroll {
+    height: calc(100% - 30px);
+    overflow-y: scroll;
+}
+
+.currencies-list__item__wrapper {
     width: 100%;
     height: 50px;
     border-bottom: 0.1px solid gray;
     cursor: pointer;
 }
 
-.currency-list__item:hover {
+.currencies-list__item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-weight: 300;
+    color: #fff;
+}
+
+.currencies-list__item__wrapper:hover {
     background: rgba(53, 53, 53, 0.3);
+}
+
+.currencies-list__item__number {
+    flex: 0.7;
+    text-align: center;
+}
+
+.currencies-list__item__name {
+    flex: 2;
+    text-align: center;
+}
+
+.currencies-list__item__24h {
+    flex: 2;
+    text-align: center;
+}
+
+.currencies-list__item__market-cap {
+    flex: 3;
+    text-align: center;
+}
+
+.currencies-list__item__volume-24h {
+    flex: 3;
+    text-align: center;
+}
+
+.currencies-list__item__price {
+    flex: 2;
+    text-align: center;
 }
 
 .currency-list__item span {
