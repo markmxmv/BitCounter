@@ -11,7 +11,20 @@ export class CurrencyChart extends AbstractDiv {
         this.el.classList.add('currency-chart');
         this.el.innerHTML = `
         <div class="currency-chart__wrapper">
-            <div class="chart__title">BTC/USDT</div>
+            <div class="chart__title">
+                <div class="currency-pair">
+                    <div class="currency-logo__wrapper">
+                        <img class="currency-logo" src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"/>
+                    </div>
+                    <div class="currency-pair__name">BTC/USD</div>
+                </div>
+                <div class="currency-price">$27913</div>
+                <div class="chart__title__info">
+                    <div class="chart__title__info__website">Website: <a href="https://bitcoin.org/en/" target="_blank">bitcoin.org</a></div>
+                    <div class="chart__title__info__24h">24h%: 1.4%</div>
+                    <div class="chart__title__info__market-cap">Market Cap: $538,554,884,743</div>
+                </div>
+            </div>
             <div class="cryptocurrencies-chart">
             </div>
         </div>
