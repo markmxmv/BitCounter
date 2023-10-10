@@ -18,11 +18,17 @@ export class CurrencyChart extends AbstractDiv {
                     </div>
                     <div class="currency-pair__name">BTC/USD</div>
                 </div>
-                <div class="currency-price">$27913</div>
+                <div class="currency-price__wrapper">
+                    <div class="currency-price">$27913</div>
+                    <div class="currency-price__24h">
+                        <img class="icon__24h" src="../../static/24h-positive.svg"/>
+                        1.4%
+                    </div>
+                </div>
                 <div class="chart__title__info">
-                    <div class="chart__title__info__website">Website: <a href="https://bitcoin.org/en/" target="_blank">bitcoin.org</a></div>
-                    <div class="chart__title__info__24h">24h%: 1.4%</div>
-                    <div class="chart__title__info__market-cap">Market Cap: $538,554,884,743</div>
+                    <div class="chart__title__info__market-cap">Market Cap: <span style="font-size: 20px; color: #fff">$538,554,884,743</span></div>
+                    <div class="chart__title__info__volume-24h">Volume 24h: <span style="font-size: 20px; color: #fff">$6,894,162,331</span></div>
+                    <div class="chart__title__info__website">Website: <a class="chart__title__info__website__link"href="https://bitcoin.org/en/" target="_blank">bitcoin.org</a></div>
                 </div>
             </div>
             <div class="cryptocurrencies-chart">
@@ -31,8 +37,9 @@ export class CurrencyChart extends AbstractDiv {
         <hr/>
         `;
         const chartOptions = {
-            width:800,
-            height:300,
+            height: 300,
+            width: 800,
+
             layout: {
                 background: { color: 'rgba(1,1,1,0'},
                 textColor: '#fff'

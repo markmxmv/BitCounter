@@ -7,13 +7,6 @@
     background: rgba(0, 0, 0, 0.3);
 }
 
-.favorites-icon {
-    height: fit-content;
-    width: fit-content;
-    opacity: 0.5;
-    margin: 30px auto;
-}
-
 .currencies-list__left {
     height: calc(100vh - 88px - 390px);
     width: 400px;
@@ -35,6 +28,17 @@
 .currencies-list__search::placeholder {
     font-weight: 300;
     font-size: 18px;
+}
+
+.favorites-icon__wrapper {
+    height: calc(75% - 50px);
+    width: fit-content;
+    margin: 5% auto;
+}
+
+.favorites-icon {
+    height: 100%;
+    opacity: 0.5;
 }
 
 .currencies-list__right {
@@ -64,12 +68,12 @@
 }
 
 .currencies-list__header__name {
-    flex: 2;
+    flex: 1;
     text-align: center;
 }
 
 .currencies-list__header__24h {
-    flex: 2;
+    flex: 3;
     text-align: center;
 }
 
@@ -117,14 +121,21 @@
     text-align: center;
 }
 
+.currencies-list__item__name__logo {
+    height: 19.5px;
+}
+
 .currencies-list__item__name {
-    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: 1;
     text-align: center;
 }
 
 .currencies-list__item__24h {
-    flex: 2;
-    text-align: center;
+    color: #4ECB71;
 }
 
 .currencies-list__item__market-cap {
@@ -135,6 +146,18 @@
 .currencies-list__item__volume-24h {
     flex: 3;
     text-align: center;
+}
+
+.currencies-list__item__24h__wrapper {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.currencies-list__item__24h__icon {
+    height: 10px;
 }
 
 .currencies-list__item__price {

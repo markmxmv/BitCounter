@@ -1,12 +1,15 @@
 .currency-chart__wrapper {
     display: flex;
     align-items: center;
+    gap: 100px;
     justify-content: space-around;
     height: 390px;
+    padding: 0 5%
 }
 
 .cryptocurrencies-chart {
     width: fit-content;
+    flex: 2;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid gray;
     border-radius: 10px;
@@ -15,14 +18,14 @@
 .chart__title {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    justify-content: space-between;
     color: #fff;
     font-family: 'Inter';
     font-weight: 700;
     border: 1px solid gray;
     border-radius: 10px;
     height: 300px;
-    width: 500px;
+    flex: 1;
     padding: 30px;
     background: rgba(0, 0, 0, 0.3);
 }
@@ -43,19 +46,45 @@
     align-self: center;
 }
 
+.currency-price__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
 .currency-price {
     font-size: 50px;
 }
 
-.chart__title__info {
+.currency-price__24h {
     font-size: 20px;
+    color: #4ECB71;
+}
+
+.icon__24h {
+    height: 15px;
+}
+
+.chart__title__info {
+    font-size: 15px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.636)
+    flex-direction: column;
+    gap: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.636);
 }
 
 .chart__title__info__website {
     text-decoration: none;
+}
+
+.chart__title__info__website__link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+.chart__title__info__website__link:hover {
+    color: rgba(255, 255, 255, 0.636);
 }

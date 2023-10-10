@@ -11,14 +11,14 @@ export class CurrenciesList extends AbstractDiv{
     }
 
     render() {
-        const coinList = this.loadList();
+        // const coinList = this.loadList();
         this.el.classList.add('currencies-list');
         this.el.innerHTML = `
         <div class="currencies-list__wrapper">
             <div class="currencies-list__left">
                 <input type="text" class="currencies-list__search" placeholder="Search crypto"></input>
-                <div class="favorites-icon">
-                    <img src="../../../static/favorites.svg"/>
+                <div class="favorites-icon__wrapper">
+                    <img class="favorites-icon" src="../../../static/favorites.svg"/>
                 </div>
             </div>
             <div class="currencies-list__right">
@@ -36,19 +36,21 @@ export class CurrenciesList extends AbstractDiv{
                     <div class="currencies-list__item__wrapper">
                         <div class="currencies-list__item">
                             <span class="currencies-list__item__number">1</span>
-                            <span class="currencies-list__item__name">BTC</span>
-                            <span class="currencies-list__item__24h">5.4%</span>
+                            <span class="currencies-list__item__name"><img class="currencies-list__item__name__logo" src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400">BTC</span>
+                            <div class="currencies-list__item__24h__wrapper"><img class="currencies-list__item__24h__icon" src="../../static/24h-positive.svg"/><span class="currencies-list__item__24h">5.4%</span></div>
                             <span class="currencies-list__item__market-cap">$545,355,983,749</span>
                             <span class="currencies-list__item__volume-24h">$6,894,162,331</span>
                             <span class="currencies-list__item__price">$27,956.29</span>
                         </div>
                     </div>
+                    
+
                 </div>
                 
             </div>
         </div>
         `
-        console.log(coinList)
+        // console.log(coinList)
         return this.el
     }
 }
