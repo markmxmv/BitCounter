@@ -1,13 +1,33 @@
 import { AbstractDiv } from "../../common/abstractDiv";
 import './currenciesList.css'
 export class CurrenciesList extends AbstractDiv{
-    constructor() {
-        super()
+    constructor(state) {
+        super();
+        this.state = state;
     }
 
-    async loadList() {
-        const coinList = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en`)
-        return coinList.json();
+    getNegativeOrPositivePercentage(item) {
+        if(item.price_change_percentage_24h < 0) {
+            return 'negative'
+        } return 'positive'
+    }
+
+    renderListItem(item) {
+        const coinListItem = document.createElement('div');
+        coinListItem.classList.add('currencies-list__item__wrapper')
+        coinListItem.classList.add(`${item.id}`)
+        coinListItem.innerHTML = `
+            <div class="currencies-list__item">
+                <span class="currencies-list__item__number">${item.market_cap_rank}</span>
+                <div class="currencies-list__item__name__logo__wrapper"><img class="currencies-list__item__name__logo" src=${item.image}></div>
+                <span class="currencies-list__item__name">${item.symbol.toUpperCase()}</span>
+                <div class="currencies-list__item__24h__wrapper"><img class="currencies-list__item__24h__icon" src="../../static/24h-${this.getNegativeOrPositivePercentage(item)}.svg"/><span class="currencies-list__item__24h ${this.getNegativeOrPositivePercentage(item)}">${item.price_change_percentage_24h.toFixed(1)}%</span></div>
+                <span class="currencies-list__item__market-cap">$${item.market_cap}</span>
+                <span class="currencies-list__item__volume-24h">$${item.total_volume}</span>
+                <span class="currencies-list__item__price">$${item.current_price}</span>
+            </div>
+        `
+        return coinListItem
     }
 
     render() {
@@ -32,25 +52,17 @@ export class CurrenciesList extends AbstractDiv{
                         <span class="currencies-list__header__price">Price</span>
                     </div>
                 </div>
-                <div class="currencies-list__scroll">
-                    <div class="currencies-list__item__wrapper">
-                        <div class="currencies-list__item">
-                            <span class="currencies-list__item__number">1</span>
-                            <span class="currencies-list__item__name"><img class="currencies-list__item__name__logo" src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400">BTC</span>
-                            <div class="currencies-list__item__24h__wrapper"><img class="currencies-list__item__24h__icon" src="../../static/24h-positive.svg"/><span class="currencies-list__item__24h">5.4%</span></div>
-                            <span class="currencies-list__item__market-cap">$545,355,983,749</span>
-                            <span class="currencies-list__item__volume-24h">$6,894,162,331</span>
-                            <span class="currencies-list__item__price">$27,956.29</span>
-                        </div>
-                    </div>
-                    
-
-                </div>
-                
             </div>
         </div>
         `
-        // console.log(coinList)
+
+        const coinList = document.createElement('div');
+        coinList.classList.add('currencies-list__scroll');
+        for(const item of this.state.coinList) {
+            coinList.append(this.renderListItem(item));
+            console.log(coinList)
+            this.el.querySelector('.currencies-list__right').appendChild(coinList)
+        }
         return this.el
     }
 }

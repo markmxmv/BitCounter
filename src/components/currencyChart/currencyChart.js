@@ -82,7 +82,6 @@ export class CurrencyChart extends AbstractDiv {
 
         areaSeries.setData(chartData)
         cryptocurrenciesChart.timeScale().fitContent()
-        console.log(cryptocurrenciesChart)
         return this.el;
     }
 }

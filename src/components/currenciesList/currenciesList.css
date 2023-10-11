@@ -67,8 +67,10 @@
     text-align: center;
 }
 
+
+
 .currencies-list__header__name {
-    flex: 1;
+    flex: 0.8;
     text-align: center;
 }
 
@@ -109,7 +111,7 @@
     align-items: center;
     height: 100%;
     font-weight: 300;
-    color: #fff;
+    color: gray;
 }
 
 .currencies-list__item__wrapper:hover {
@@ -119,22 +121,32 @@
 .currencies-list__item__number {
     flex: 0.7;
     text-align: center;
+    color: #fff;
+}
+
+.currencies-list__item__name__logo__wrapper {
+    flex: 0.3;
 }
 
 .currencies-list__item__name__logo {
     height: 19.5px;
+    border-radius: 50%;
 }
 
 .currencies-list__item__name {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
-    flex: 1;
+    justify-content: left;
+    flex: 0.5;
     text-align: center;
+    color: #fff;
 }
 
-.currencies-list__item__24h {
+.negative{
+    color: #CB4E4E;
+}
+
+.positive {
     color: #4ECB71;
 }
 
@@ -163,6 +175,8 @@
 .currencies-list__item__price {
     flex: 2;
     text-align: center;
+    color: #fff;
+    font-weight: 500;
 }
 
 .currency-list__item span {
