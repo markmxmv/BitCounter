@@ -62,6 +62,10 @@
     align-items: center;
 }
 
+.currencies-list__header__favorites-button {
+    flex: 0.4;
+}
+
 .currencies-list__header__number {
     flex: 0.7;
     text-align: center;
@@ -70,28 +74,32 @@
 
 
 .currencies-list__header__name {
-    flex: 0.8;
-    text-align: center;
+    flex: 1;
+    text-align: left;
 }
 
 .currencies-list__header__24h {
-    flex: 3;
-    text-align: center;
+    flex: 2;
+    text-align: right;
 }
 
 .currencies-list__header__market-cap {
     flex: 3;
-    text-align: center;
+    text-align: right;
 }
 
 .currencies-list__header__volume-24h {
     flex: 3;
-    text-align: center;
+    text-align: right;
 }
 
 .currencies-list__header__price {
     flex: 2;
-    text-align: center;
+    text-align: right;
+}
+
+.currencies-list__header__dummy {
+    flex: 1;
 }
 
 .currencies-list__scroll {
@@ -118,6 +126,22 @@
     background: rgba(53, 53, 53, 0.3);
 }
 
+.currencies-list__item__favorites-button {
+    flex: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.favorites-button {
+    height: 18px;
+    width: 18px;
+}
+
+.favorites-button:hover {
+    filter: brightness(0) invert(1);
+}
+
 .currencies-list__item__number {
     flex: 0.7;
     text-align: center;
@@ -131,13 +155,14 @@
 .currencies-list__item__name__logo {
     height: 19.5px;
     border-radius: 50%;
+    margin-top: 4px;
 }
 
 .currencies-list__item__name {
     display: flex;
     align-items: center;
     justify-content: left;
-    flex: 0.5;
+    flex: 0.7;
     text-align: center;
     color: #fff;
 }
@@ -152,29 +177,37 @@
 
 .currencies-list__item__market-cap {
     flex: 3;
-    text-align: center;
+    text-align: right;
 }
 
 .currencies-list__item__volume-24h {
     flex: 3;
-    text-align: center;
+    text-align: right;
 }
 
-.currencies-list__item__24h__wrapper {
-    flex: 3;
+.currencies-list__item__24h__icon__wrapper {
+    flex: 1.5;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
+    justify-content: right;
 }
 
 .currencies-list__item__24h__icon {
     height: 10px;
 }
 
+.currencies-list__item__24h {
+    flex: 0.5;
+    text-align: right;
+}
+
+.currencies-list__item__dummy {
+    flex: 1;
+}
+
 .currencies-list__item__price {
     flex: 2;
-    text-align: center;
+    text-align: right;
     color: #fff;
     font-weight: 500;
 }
