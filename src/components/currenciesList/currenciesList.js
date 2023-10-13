@@ -10,12 +10,12 @@ export class CurrenciesList extends AbstractDiv{
     }
 
     #addToFavorites(id) {
-        this.favorites.push(this.coinList.find(i => i.id == id))
+        this.appState.favorites.push(this.coinList.find(i => i.id == id))
     }
 
     #deleteFromFavorites(id) {
         console.log(id)
-        this.favorites = this.favorites.filter((c) => {return c.id != id})
+        this.appState.favorites = this.appState.favorites.filter((c) => {return c.id != id})
     }
     
 
@@ -26,7 +26,6 @@ export class CurrenciesList extends AbstractDiv{
     }
 
     renderListItem(item) {
-        console.log(item.id)
         const existInFavorites = this.favorites.find(i => i.id == item.id)
         const coinListItem = document.createElement('div');
         coinListItem.classList.add('currencies-list__item__wrapper')
@@ -47,7 +46,6 @@ export class CurrenciesList extends AbstractDiv{
                 <div class="currencies-list__item__dummy"></div>
             </div>
         `
-        console.log(this.favorites)
         if(existInFavorites) {
             coinListItem.querySelector('.favorites-button').addEventListener('click', () => {this.#deleteFromFavorites.bind(this)(item.id)})
         } else {
@@ -57,17 +55,51 @@ export class CurrenciesList extends AbstractDiv{
 
     }
 
+    renderFavoritesIcon() {
+        const favoritesIcon = document.createElement('div');
+        favoritesIcon.classList.add('favorites-icon__wrapper');
+        favoritesIcon.innerHTML = `
+            <img class="favorites-icon" src="../../../static/favorites.svg"/>
+
+        `
+
+        return favoritesIcon
+    }
+
+    renderFavoritesItem(item) {
+        const existInFavorites = this.favorites.find(i => i.id == item.id)
+        const favoritesListItem = document.createElement('div');
+        favoritesListItem.classList.add('favorites-list__item__wrapper')
+        favoritesListItem.id = `${item.id}`;
+        favoritesListItem.innerHTML = `
+        <div class="favorites-list__item">
+                <div class="favorites-list__item__favorites-button">
+                    <img class="favorites-button" src="../../../static/favorites-button${existInFavorites?'_active':''}.svg"/>
+                </div>
+                <div class="favorites-list__item__name__logo__wrapper"><img class="favorites-list__item__name__logo" src=${item.image}></div>
+                <span class="favorites-list__item__name">${item.symbol.toUpperCase()}</span>
+                <div class="favorites-list__item__24h__icon__wrapper"><img class="favorites-list__item__24h__icon" src="../../static/24h-${this.getNegativeOrPositivePercentage(item)}.svg"/></div>
+                <span class="favorites-list__item__24h ${this.getNegativeOrPositivePercentage(item)}">${item.price_change_percentage_24h.toFixed(1)}%</span>
+                <span class="favorites-list__item__price">$${item.current_price}</span>
+                <div class="favorites-list__item__dummy"></div>
+            </div>
+        `
+
+        if(existInFavorites) {
+            favoritesListItem.querySelector('.favorites-button').addEventListener('click', () => {this.#deleteFromFavorites.bind(this)(item.id)})
+        } else {
+            favoritesListItem.querySelector('.favorites-button').addEventListener('click', () => {this.#addToFavorites.bind(this)(item.id)})
+        };
+        return favoritesListItem
+        
+    }
+
     render() {
         this.el.classList.add('currencies-list');
         this.el.innerHTML = `
         <div class="currencies-list__wrapper">
             <div class="currencies-list__left">
                 <input type="text" class="currencies-list__search" placeholder="Search crypto"></input>
-                <div class="currencies-list__favorites">
-                    <div class="favorites-icon__wrapper">
-                    <img class="favorites-icon" src="../../../static/favorites.svg"/>
-                </div>
-                </div>
             </div>
             <div class="currencies-list__right">
                 <div class="currencies-list__header">
@@ -90,7 +122,25 @@ export class CurrenciesList extends AbstractDiv{
         coinList.classList.add('currencies-list__scroll');
         for(const item of this.coinList) {
             coinList.append(this.renderListItem(item));
-            this.el.querySelector('.currencies-list__right').appendChild(coinList);
+        }
+        this.el.querySelector('.currencies-list__right').appendChild(coinList);
+
+
+        if(this.appState.favorites.length == 0) {
+            this.el.querySelector('.currencies-list__left').append(this.renderFavoritesIcon())
+        } else {
+            const favoritesHeader = document.createElement('div');
+            favoritesHeader.classList.add('favorites-list__header');
+            favoritesHeader.innerHTML = `
+                <span>Favorites:</span>
+            `
+            this.el.querySelector('.currencies-list__left').appendChild(favoritesHeader);
+            const favoritesList = document.createElement('div');
+            favoritesList.classList.add('currencies-list__favorites__scroll');
+            for(const item of this.appState.favorites) {
+                favoritesList.append(this.renderFavoritesItem(item));
+            }
+            this.el.querySelector('.currencies-list__left').appendChild(favoritesList);
         }
         return this.el
     }

@@ -41,6 +41,63 @@
     opacity: 0.5;
 }
 
+.favorites-list__header {
+    height: 25px;
+    width: 100%;
+    border-bottom: 0.1px solid gray;
+    color: gray;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+
+}
+
+.favorites-list__header span {
+    margin-left: 8px;
+    color: gray;
+}
+
+.currencies-list__favorites__scroll {
+    height: calc(100% - 75px);
+    overflow: scroll;
+}
+
+.favorites-list__item__favorites-button {
+    flex: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorites-list__item__name__logo__wrapper {
+    flex: 0.3;
+}
+
+.favorites-list__item__name {
+    color: #fff;
+    flex: 0.8;
+    font-size: 16px;
+}
+
+.favorites-list__item__24h {
+    flex: 0.54;
+    margin-right: 5px;
+    text-align: right;
+}
+
+.favorites-list__item__price {
+    flex: 1.2;
+    text-align: right;
+    color: #fff;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.favorites-list__item__dummy {
+    flex: 0.2;
+}
+
 .currencies-list__right {
     height: calc(100vh - 88px - 390px);
     width: 100%;
@@ -104,17 +161,17 @@
 
 .currencies-list__scroll {
     height: calc(100% - 30px);
-    overflow-y: scroll;
+    overflow: scroll;
 }
 
-.currencies-list__item__wrapper {
+.currencies-list__item__wrapper, .favorites-list__item__wrapper {
     width: 100%;
     height: 50px;
     border-bottom: 0.1px solid gray;
     cursor: pointer;
 }
 
-.currencies-list__item {
+.currencies-list__item, .favorites-list__item {
     display: flex;
     align-items: center;
     height: 100%;
@@ -122,7 +179,7 @@
     color: gray;
 }
 
-.currencies-list__item__wrapper:hover {
+.currencies-list__item__wrapper:hover, .favorites-list__item:hover {
     background: rgba(53, 53, 53, 0.3);
 }
 
@@ -152,7 +209,7 @@
     flex: 0.3;
 }
 
-.currencies-list__item__name__logo {
+.currencies-list__item__name__logo, .favorites-list__item__name__logo {
     height: 19.5px;
     border-radius: 50%;
     margin-top: 4px;
@@ -192,7 +249,7 @@
     justify-content: right;
 }
 
-.currencies-list__item__24h__icon {
+.currencies-list__item__24h__icon, .favorites-list__item__24h__icon {
     height: 10px;
 }
 

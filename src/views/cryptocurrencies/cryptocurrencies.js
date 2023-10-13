@@ -12,8 +12,9 @@ export class CryptocurrenciesView extends AbstractView {
         this.appState = onChange(this.appState, this.appStateHook.bind(this))
     }
 
-    appStateHook(path) {
-        console.log(path)
+    appStateHook(path, value) {
+        console.log(path);
+        console.log(value.at(-1));
         if (path == 'favorites') {
             this.render()
         }
