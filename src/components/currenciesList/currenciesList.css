@@ -176,7 +176,7 @@
     align-items: center;
     height: 100%;
     font-weight: 300;
-    color: gray;
+    color: rgba(255, 255, 255, 0.636);
 }
 
 .currencies-list__item__wrapper:hover, .favorites-list__item:hover {
