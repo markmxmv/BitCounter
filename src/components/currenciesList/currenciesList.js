@@ -4,17 +4,14 @@ import './currenciesList.css'
 export class CurrenciesList extends AbstractDiv{
     constructor(appState) {
         super();
-        this.coinList = appState.coinList;
-        this.favorites = appState.favorites;
         this.appState = appState;
     }
 
     #addToFavorites(id) {
-        this.appState.favorites.push(this.coinList.find(i => i.id == id))
+        this.appState.favorites.push(this.appState.coinList.find(i => i.id == id))
     }
 
     #deleteFromFavorites(id) {
-        console.log(id)
         this.appState.favorites = this.appState.favorites.filter((c) => {return c.id != id})
     }
     
@@ -26,7 +23,7 @@ export class CurrenciesList extends AbstractDiv{
     }
 
     renderListItem(item) {
-        const existInFavorites = this.favorites.find(i => i.id == item.id)
+        const existInFavorites = this.appState.favorites.find(i => i.id == item.id)
         const coinListItem = document.createElement('div');
         coinListItem.classList.add('currencies-list__item__wrapper')
         coinListItem.id = `${item.id}`;
@@ -51,6 +48,9 @@ export class CurrenciesList extends AbstractDiv{
         } else {
             coinListItem.querySelector('.favorites-button').addEventListener('click', () => {this.#addToFavorites.bind(this)(item.id)})
         };
+        coinListItem.addEventListener('click', () => {
+            this.setChosenCoin(coinListItem.id)
+        })
         return coinListItem;
 
     }
@@ -67,7 +67,7 @@ export class CurrenciesList extends AbstractDiv{
     }
 
     renderFavoritesItem(item) {
-        const existInFavorites = this.favorites.find(i => i.id == item.id)
+        const existInFavorites = this.appState.favorites.find(i => i.id == item.id)
         const favoritesListItem = document.createElement('div');
         favoritesListItem.classList.add('favorites-list__item__wrapper')
         favoritesListItem.id = `${item.id}`;
@@ -92,6 +92,10 @@ export class CurrenciesList extends AbstractDiv{
         };
         return favoritesListItem
         
+    }
+
+    setChosenCoin(coin) {
+        this.appState.chosenCoin = coin;
     }
 
     render() {
@@ -120,7 +124,7 @@ export class CurrenciesList extends AbstractDiv{
         
         const coinList = document.createElement('div');
         coinList.classList.add('currencies-list__scroll');
-        for(const item of this.coinList) {
+        for(const item of this.appState.coinList) {
             coinList.append(this.renderListItem(item));
         }
         this.el.querySelector('.currencies-list__right').appendChild(coinList);

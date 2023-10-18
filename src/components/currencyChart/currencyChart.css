@@ -88,3 +88,11 @@
 .chart__title__info__website__link:hover {
     color: rgba(255, 255, 255, 0.636);
 }
+
+.negative {
+    color: #CB4E4E;
+}
+
+.positive {
+    color: #4ECB71;
+}
