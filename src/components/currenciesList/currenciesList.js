@@ -90,6 +90,9 @@ export class CurrenciesList extends AbstractDiv{
         } else {
             favoritesListItem.querySelector('.favorites-button').addEventListener('click', () => {this.#addToFavorites.bind(this)(item.id)})
         };
+        favoritesListItem.addEventListener('click', () => {
+            this.setChosenCoin(favoritesListItem.id)
+        })
         return favoritesListItem
         
     }

@@ -41,7 +41,6 @@ export class CryptocurrenciesView extends AbstractView {
         this.app.innerHTML = '';
         this.app.append(cryptocurrencies);
         this.renderHeader();
-        console.log(this.appState.chosenCoin)
     }
 
     renderHeader() {
