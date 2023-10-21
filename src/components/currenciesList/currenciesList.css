@@ -164,6 +164,11 @@
     overflow: scroll;
 }
 
+.currencies-list__container {
+    width: 1195.6px;
+    height: 5000px;
+}
+
 .currencies-list__item__wrapper, .favorites-list__item__wrapper {
     width: 100%;
     height: 50px;
