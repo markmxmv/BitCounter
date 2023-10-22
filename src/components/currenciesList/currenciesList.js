@@ -149,14 +149,7 @@ export class CurrenciesList extends AbstractDiv{
             }
             this.el.querySelector('.currencies-list__left').appendChild(favoritesList);
         }
-
-        window.addEventListener("beforeunload", () => {
-        localStorage.setItem("scrollPosition", document.querySelector('.currencies-list__scroll').scrollTop);
-        });
-
-        window.addEventListener("load", () => {
-        document.querySelector('.currencies-list__scroll').scrollTop = localStorage.getItem("scrollPosition");
-        });
+        
         return this.el
     }
 }

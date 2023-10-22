@@ -9,21 +9,21 @@ export class CurrencyChart extends AbstractDiv {
     }
 
     async loadAllCoins() {
-        const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&page=1&sparkline=false&locale=en`);
-        // const res = await fetch(`../../../static/coinList.json`)
+        // const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&page=1&sparkline=false&locale=en`);
+        const res = await fetch(`../../../static/coinList.json`)
         return res.json();
     }
 
     async loadCoinWebsite(coin) {
-        const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
-        // const res = await fetch(`../../../static/bitcoin.json`)
+        // const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
+        const res = await fetch(`../../../static/bitcoin.json`)
         return res.json();
 
     }
 
     async loadHistory(coin) {
-        const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=7&interval=daily`)
-        // const res = await fetch(`../../../static/bitcoin-history.json`);
+        // const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=7&interval=daily`)
+        const res = await fetch(`../../../static/bitcoin-history.json`);
         return res.json()
     }
 

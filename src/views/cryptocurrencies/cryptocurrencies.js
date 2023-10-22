@@ -12,13 +12,31 @@ export class CryptocurrenciesView extends AbstractView {
         this.appState = onChange(this.appState, this.appStateHook.bind(this))
     }
 
-    appStateHook(path, value) {
+    async appStateHook(path, value) {
         console.log(path);
+        if (document.querySelector('.currencies-list__scroll')) {
+            localStorage.setItem("coinListScrollPosition", document.querySelector('.currencies-list__scroll').scrollTop);
+        }
+
+        if (document.querySelector('.currencies-list__favorites__scroll')) {
+            localStorage.setItem("favoritesScrollPosition", document.querySelector('.currencies-list__favorites__scroll').scrollTop);
+        }
+        
+        
+
         if (path == 'favorites') {
-            this.render()
+            await this.render()
+            
         }
         if (path == 'chosenCoin') {
-            this.render()
+            await this.render()
+        }
+
+        if (localStorage.getItem("coinListScrollPosition")) {
+            document.querySelector('.currencies-list__scroll').scrollTop = localStorage.getItem("coinListScrollPosition");
+        }
+        if (localStorage.getItem("favoritesScrollPosition")) {
+            document.querySelector('.currencies-list__favorites__scroll').scrollTop = localStorage.getItem("favoritesScrollPosition");
         }
     }
 
@@ -27,8 +45,8 @@ export class CryptocurrenciesView extends AbstractView {
     }
 
     async loadList() {
-        // const res = await fetch(`../../../static/coinList.json`)
-        const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en')
+        const res = await fetch(`../../../static/coinList.json`)
+        // const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en')
         return res.json()
     }
 
@@ -37,10 +55,14 @@ export class CryptocurrenciesView extends AbstractView {
         const cryptocurrencies = document.createElement('div');
         cryptocurrencies.classList.add('cryptocurrencies-view')
         cryptocurrencies.append(await new CurrencyChart(this.appState).render());
-        cryptocurrencies.append(new CurrenciesList(this.appState).render())
+        cryptocurrencies.append(new CurrenciesList(this.appState).render());
         this.app.innerHTML = '';
         this.app.append(cryptocurrencies);
         this.renderHeader();
+        window.addEventListener("beforeunload", () => {
+            localStorage.clear();
+        });
+        
 
     }
 
