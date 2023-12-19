@@ -60,7 +60,8 @@ export class CryptocurrenciesView extends AbstractView {
         this.app.append(cryptocurrencies);
         this.renderHeader();
         window.addEventListener("beforeunload", () => {
-            localStorage.clear();
+            localStorage.removeItem("coinListScrollPosition");
+            localStorage.removeItem("favoritesScrollPosition")
         });
         
 

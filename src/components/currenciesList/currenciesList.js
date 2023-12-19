@@ -149,7 +149,7 @@ export class CurrenciesList extends AbstractDiv{
             }
             this.el.querySelector('.currencies-list__left').appendChild(favoritesList);
         }
-        
+
         return this.el
     }
 }

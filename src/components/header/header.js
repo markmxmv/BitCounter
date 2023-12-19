@@ -23,7 +23,7 @@ export class Header extends AbstractDiv {
         this.el.innerHTML = `
         <div class="header__wrapper">
         <a class="header__logo" href="">
-            <img src="../../static/logo.svg" /> 
+            <img src="../../static/logo2.svg" /> 
         </a>
         <div class="header__menu">
             <div class="menu__item_cover"><a class="menu__item menu__item_cryptocurrencies" href="#cryptocurrencies">Cryptocurrencies</a></div>

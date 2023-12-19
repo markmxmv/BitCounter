@@ -65,34 +65,37 @@ export class CurrencyChart extends AbstractDiv {
         this.el.classList.add('currency-chart');
         this.el.innerHTML = `
         <div class="currency-chart__wrapper">
-            <div class="chart__title">
-                <div class="currency-pair">
-                    <div class="currency-logo__wrapper">
-                        <img class="currency-logo" src="${coinData.image}"/>
+            <div class="chart__title__wrapper">
+                <div class="chart__title">
+                    <div class="currency-pair">
+                        <div class="currency-logo__wrapper">
+                            <img class="currency-logo" src="${coinData.image}"/>
+                        </div>
+                        <div class="currency-pair__name">${coinData.symbol.toUpperCase()}/USD</div>
                     </div>
-                    <div class="currency-pair__name">${coinData.symbol.toUpperCase()}/USD</div>
-                </div>
-                <div class="currency-price__wrapper">
-                    <div class="currency-price">$${coinData.current_price}</div>
-                    <div class="currency-price__24h ${this.getNegativeOrPositivePercentage(Number(coinData.price_change_percentage_24h.toFixed(1)))}">
-                        <img class="icon__24h" src="../../static/24h-${this.getNegativeOrPositivePercentage(Number(coinData.price_change_percentage_24h.toFixed(1)))}.svg"/>
-                        ${Number(coinData.price_change_percentage_24h.toFixed(1)).toFixed(1)}%
+                    <div class="currency-price__wrapper">
+                        <div class="currency-price">$${coinData.current_price}</div>
+                        <div class="currency-price__24h ${this.getNegativeOrPositivePercentage(Number(coinData.price_change_percentage_24h.toFixed(1)))}">
+                            <img class="icon__24h" src="../../static/24h-${this.getNegativeOrPositivePercentage(Number(coinData.price_change_percentage_24h.toFixed(1)))}.svg"/>
+                            ${Number(coinData.price_change_percentage_24h.toFixed(1)).toFixed(1)}%
+                        </div>
                     </div>
-                </div>
-                <div class="chart__title__info">
-                    <div class="chart__title__info__market-cap">Market Cap: <span style="font-size: 20px; color: #fff">$${coinData.market_cap}</span></div>
-                    <div class="chart__title__info__volume-24h">Volume 24h: <span style="font-size: 20px; color: #fff">$${coinData.total_volume}</span></div>
-                    <div class="chart__title__info__website">Website: <a class="chart__title__info__website__link"href="${website.links.homepage[0]}" target="_blank">${this.getChosenCoinWebsite(website.links.homepage[0])}</a></div>
+                    <div class="chart__title__info">
+                        <div class="chart__title__info__market-cap">Market Cap: <span style="font-size: 20px; color: #fff">$${coinData.market_cap}</span></div>
+                        <div class="chart__title__info__volume-24h">Volume 24h: <span style="font-size: 20px; color: #fff">$${coinData.total_volume}</span></div>
+                        <div class="chart__title__info__website">Website: <a class="chart__title__info__website__link"href="${website.links.homepage[0]}" target="_blank">${this.getChosenCoinWebsite(website.links.homepage[0])}</a></div>
+                    </div>
                 </div>
             </div>
+
             <div class="cryptocurrencies-chart">
             </div>
         </div>
         <hr/>
         `;
         const chartOptions = {
-            height: 300,
-            width: 800,
+            height: 388,
+            width: 952,
 
             layout: {
                 background: { color: 'rgba(1,1,1,0'},
