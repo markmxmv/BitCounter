@@ -14,6 +14,6 @@ Features of Bitcounter's portfolio manager:
 
 ## ROADMAP
 
-[x] Creating "Cryptocurrencies market" page
-[] Creating "Portfolio" page
-[] Creating "About" page
+- [x] Creating "Cryptocurrencies market" page
+- [] Creating "Portfolio" page
+- [] Creating "About" page
