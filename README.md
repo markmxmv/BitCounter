@@ -1,5 +1,3 @@
-# BitCounter
-
 <img src="./static/Banner.png"/>
 
 ## What is BitCounter?
@@ -12,8 +10,10 @@ Features of Bitcounter's portfolio manager:
 - Integrated AI helper
 - The ability to create a profile to which all your portfolio data will be linked. It allows you to use Bitcounter on many devices
 
-## ROADMAP
+<img src="./static/Market page.png"/>
 
-- [x] Creating "Cryptocurrencies market" page
-- [] Creating "Portfolio" page
-- [] Creating "About" page
+## Project roadmap
+
+- [x] ~~_Creating "Cryptocurrencies market" page_~~
+- [ ] _Creating "Portfolio" page_
+- [ ] _Creating "About" page_
