@@ -31,6 +31,10 @@ export class CryptocurrenciesView extends AbstractView {
         if (path == 'chosenCoin') {
             await this.render()
         }
+        if (path == 'searchQuery') {
+            console.log('searching')
+            await this.render()
+        }
 
         if (localStorage.getItem("coinListScrollPosition")) {
             document.querySelector('.currencies-list__scroll').scrollTop = localStorage.getItem("coinListScrollPosition");

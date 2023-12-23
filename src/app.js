@@ -14,7 +14,8 @@ class App {
     appState = {
         coinList: [],
         favorites: [],
-        chosenCoin: undefined
+        chosenCoin: undefined,
+        searchQuery: undefined
     }
 
     constructor(){

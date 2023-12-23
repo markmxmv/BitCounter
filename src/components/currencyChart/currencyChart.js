@@ -94,7 +94,7 @@ export class CurrencyChart extends AbstractDiv {
         <hr/>
         `;
         const chartOptions = {
-            height: 388,
+            height: 338,
             width: 952,
 
             layout: {
@@ -139,6 +139,7 @@ export class CurrencyChart extends AbstractDiv {
 
         areaSeries.setData(chartData)
         cryptocurrenciesChart.timeScale().fitContent()
+        console.log(this.appState)
         return this.el;
     }
 }

@@ -124,7 +124,12 @@ export class CurrenciesList extends AbstractDiv{
             </div>
         </div>
         `
-        
+        this.el.querySelector('.currencies-list__search').addEventListener('keydown', (e) => {
+            if(e.code == 'Enter') {
+                console.log(this.el.querySelector('.currencies-list__search').value);
+                this.appState.searchQuery = this.el.querySelector('.currencies-list__search').value;
+            } return
+        })
         const coinList = document.createElement('div');
         coinList.classList.add('currencies-list__scroll');
         for(const item of this.appState.coinList) {
@@ -132,22 +137,31 @@ export class CurrenciesList extends AbstractDiv{
         }
         this.el.querySelector('.currencies-list__right').appendChild(coinList);
 
-
-        if(this.appState.favorites.length == 0) {
-            this.el.querySelector('.currencies-list__left').append(this.renderFavoritesIcon())
-        } else {
-            const favoritesHeader = document.createElement('div');
-            favoritesHeader.classList.add('favorites-list__header');
-            favoritesHeader.innerHTML = `
-                <span>Favorites:</span>
-            `
-            this.el.querySelector('.currencies-list__left').appendChild(favoritesHeader);
-            const favoritesList = document.createElement('div');
-            favoritesList.classList.add('currencies-list__favorites__scroll');
-            for(const item of this.appState.favorites) {
-                favoritesList.append(this.renderFavoritesItem(item));
+        if (this.appState.searchQuery === undefined || this.appState.searchQuery === '') {
+            if(this.appState.favorites.length == 0) {
+                this.el.querySelector('.currencies-list__left').append(this.renderFavoritesIcon())
+            } else {
+                const favoritesHeader = document.createElement('div');
+                favoritesHeader.classList.add('favorites-list__header');
+                favoritesHeader.innerHTML = `
+                    <span>Favorites:</span>
+                `
+                this.el.querySelector('.currencies-list__left').appendChild(favoritesHeader);
+    
+                    const favoritesList = document.createElement('div');
+                    favoritesList.classList.add('currencies-list__favorites__scroll');
+                    for(const item of this.appState.favorites) {
+                        favoritesList.append(this.renderFavoritesItem(item));
+                    }
+                    this.el.querySelector('.currencies-list__left').appendChild(favoritesList);
             }
-            this.el.querySelector('.currencies-list__left').appendChild(favoritesList);
+        } else {
+            const searchResults = document.createElement('div');
+                searchResults.classList.add('searchResults');
+                searchResults.innerHTML = `
+                    <div width="100px" height="100px">Here will be search results</div>
+                `
+                this.el.querySelector('.currencies-list__left').appendChild(searchResults)
         }
 
         return this.el
