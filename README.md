@@ -4,7 +4,7 @@
 
 Bitcounter is a tool for monitoring the market of cryptocurrencies and tracking your investment portfolio!
 
-<img src="./static/Market page.png"/>
+<img src="./static/Market page.png" width="415px"/>
 
 **Features of Bitcounter's portfolio manager:**
 
