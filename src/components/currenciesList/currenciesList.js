@@ -106,7 +106,10 @@ export class CurrenciesList extends AbstractDiv{
         this.el.innerHTML = `
         <div class="currencies-list__wrapper">
             <div class="currencies-list__left">
-                <input type="text" class="currencies-list__search" placeholder="Search crypto"></input>
+                <div class="currencies-list__search__wrapper">
+                    <input type="text" class="currencies-list__search" placeholder="Search crypto"></input>
+                    <img class="cancel-search-button" hidden src="../../../static/cancel-search.svg"></img>
+                </div>
             </div>
             <div class="currencies-list__right">
                 <div class="currencies-list__header">
@@ -124,12 +127,29 @@ export class CurrenciesList extends AbstractDiv{
             </div>
         </div>
         `
+        this.el.querySelector('.currencies-list__search').addEventListener('input', (e) => {
+            if (e.target.value) {
+                this.el.querySelector('.cancel-search-button').hidden = false;
+            }
+            if(e.target.value === '') {
+                if (this.el.querySelector('.cancel-search-button').hidden == false) {
+                    this.el.querySelector('.cancel-search-button').hidden = true;
+                }
+            }
+        })
+
         this.el.querySelector('.currencies-list__search').addEventListener('keydown', (e) => {
             if(e.code == 'Enter') {
                 console.log(this.el.querySelector('.currencies-list__search').value);
                 this.appState.searchQuery = this.el.querySelector('.currencies-list__search').value;
             } return
         })
+
+        this.el.querySelector('.cancel-search-button').addEventListener('click', () => {
+            this.el.querySelector('.cancel-search-button').hidden = true;
+            this.el.querySelector('.currencies-list__search').value = '';
+        })
+
         const coinList = document.createElement('div');
         coinList.classList.add('currencies-list__scroll');
         for(const item of this.appState.coinList) {
