@@ -67,6 +67,7 @@ export class CryptocurrenciesView extends AbstractView {
             localStorage.removeItem("coinListScrollPosition");
             localStorage.removeItem("favoritesScrollPosition")
         });
+        
 
     }
 

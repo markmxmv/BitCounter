@@ -1176,36 +1176,6 @@ class CurrenciesList extends AbstractDiv{
         
     }
 
-    renderSearchItem(item) {
-        const existInFavorites = this.appState.favorites.find(i => i.id == item.id);
-        const searchListItem = document.createElement('div');
-        searchListItem.classList.add('search-list__item__wrapper');
-        searchListItem.id = `${item.id}`;
-        searchListItem.innerHTML = `
-        <div class="search-list__item">
-                <div class="favorites-list__item__favorites-button">
-                    <img class="favorites-button" src="../../../static/favorites-button${existInFavorites?'_active':''}.svg"/>
-                </div>
-                <div class="search-list__item__name__logo__wrapper"><img class="favorites-list__item__name__logo" src=${item.image}></div>
-                <span class="search-list__item__name">${item.symbol.toUpperCase()}</span>
-                <div class="search-list__item__24h__icon__wrapper"><img class="search-list__item__24h__icon" src="../../static/24h-${this.getNegativeOrPositivePercentage(item)}.svg"/></div>
-                <span class="search-list__item__24h ${this.getNegativeOrPositivePercentage(item)}">${item.price_change_percentage_24h.toFixed(1)}%</span>
-                <span class="search-list__item__price">$${item.current_price}</span>
-                <div class="search-list__item__dummy"></div>
-            </div>
-        `;
-
-        if(existInFavorites) {
-            searchListItem.querySelector('.favorites-button').addEventListener('click', () => {this.#deleteFromFavorites.bind(this)(item.id);});
-        } else {
-            searchListItem.querySelector('.favorites-button').addEventListener('click', () => {this.#addToFavorites.bind(this)(item.id);});
-        }        searchListItem.addEventListener('click', () => {
-            this.setChosenCoin(searchListItem.id);
-        });
-        return searchListItem
-        
-    }
-
     setChosenCoin(coin) {
         this.appState.chosenCoin = coin;
     }
@@ -1249,6 +1219,7 @@ class CurrenciesList extends AbstractDiv{
 
         this.el.querySelector('.currencies-list__search').addEventListener('keydown', (e) => {
             if(e.code == 'Enter') {
+                console.log(this.el.querySelector('.currencies-list__search').value);
                 this.appState.searchQuery = this.el.querySelector('.currencies-list__search').value;
             } return
         });
@@ -1276,30 +1247,20 @@ class CurrenciesList extends AbstractDiv{
                 `;
                 this.el.querySelector('.currencies-list__left').appendChild(favoritesHeader);
     
-                const favoritesList = document.createElement('div');
-                favoritesList.classList.add('currencies-list__favorites__scroll');
-                for(const item of this.appState.favorites) {
-                    favoritesList.append(this.renderFavoritesItem(item));
-                }
-                this.el.querySelector('.currencies-list__left').appendChild(favoritesList);
+                    const favoritesList = document.createElement('div');
+                    favoritesList.classList.add('currencies-list__favorites__scroll');
+                    for(const item of this.appState.favorites) {
+                        favoritesList.append(this.renderFavoritesItem(item));
+                    }
+                    this.el.querySelector('.currencies-list__left').appendChild(favoritesList);
             }
         } else {
-            const searchHeader = document.createElement('div');
-            searchHeader.classList.add('search-list__header');
-            searchHeader.innerHTML = `
-            <span>Search results:</span>                `;
-            this.el.querySelector('.currencies-list__left').appendChild(searchHeader);
-
-            const searchListItems = this.appState.coinList.filter(el => {
-                return el.id.includes(this.appState.searchQuery) || el.symbol.includes(this.appState.searchQuery)
-            });
-
             const searchResults = document.createElement('div');
-            searchResults.classList.add('searchResults');
-            for(const item of searchListItems) {
-                    searchResults.append(this.renderSearchItem(item));
-                }
-            this.el.querySelector('.currencies-list__left').appendChild(searchResults);
+                searchResults.classList.add('searchResults');
+                searchResults.innerHTML = `
+                    <div width="100px" height="100px">Here will be search results</div>
+                `;
+                this.el.querySelector('.currencies-list__left').appendChild(searchResults);
         }
 
         return this.el
@@ -1916,6 +1877,7 @@ class CryptocurrenciesView extends AbstractView {
             localStorage.removeItem("coinListScrollPosition");
             localStorage.removeItem("favoritesScrollPosition");
         });
+        
 
     }
 
