@@ -136,12 +136,30 @@ hr {
 
 }
 
+.search-list__header {
+    height: 25px;
+    width: 100%;
+    border-bottom: 0.1px solid gray;
+    color: gray;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.search-list__header span {
+    margin-left: 8px;
+    color: gray;
+}
+
 .favorites-list__header span {
     margin-left: 8px;
     color: gray;
 }
 
-.currencies-list__favorites__scroll {
+.currencies-list__favorites__scroll, .searchResults {
     height: calc(100% - 75px);
     overflow: scroll;
 }
@@ -153,23 +171,23 @@ hr {
     justify-content: center;
 }
 
-.favorites-list__item__name__logo__wrapper {
+.favorites-list__item__name__logo__wrapper, .search-list__item__name__logo__wrapper {
     flex: 0.3;
 }
 
-.favorites-list__item__name {
+.favorites-list__item__name, .search-list__item__name {
     color: #fff;
     flex: 0.8;
     font-size: 16px;
 }
 
-.favorites-list__item__24h {
+.favorites-list__item__24h, .search-list__item__24h {
     flex: 0.54;
     margin-right: 5px;
     text-align: right;
 }
 
-.favorites-list__item__price {
+.favorites-list__item__price, .search-list__item__price {
     flex: 1.2;
     text-align: right;
     color: #fff;
@@ -177,7 +195,7 @@ hr {
     font-size: 16px;
 }
 
-.favorites-list__item__dummy {
+.favorites-list__item__dummy, .search-list__item__dummy {
     flex: 0.2;
 }
 
@@ -252,14 +270,14 @@ hr {
     height: 5000px;
 }
 
-.currencies-list__item__wrapper, .favorites-list__item__wrapper {
+.currencies-list__item__wrapper, .favorites-list__item__wrapper, .search-list__item__wrapper {
     width: 100%;
     height: 50px;
     border-bottom: 0.1px solid gray;
     cursor: pointer;
 }
 
-.currencies-list__item, .favorites-list__item {
+.currencies-list__item, .favorites-list__item, .search-list__item {
     display: flex;
     align-items: center;
     height: 100%;
@@ -330,14 +348,14 @@ hr {
     text-align: right;
 }
 
-.currencies-list__item__24h__icon__wrapper {
+.currencies-list__item__24h__icon__wrapper, .search-list__item__24h__icon__wrapper {
     flex: 1.5;
     display: flex;
     align-items: center;
     justify-content: right;
 }
 
-.currencies-list__item__24h__icon, .favorites-list__item__24h__icon {
+.currencies-list__item__24h__icon, .favorites-list__item__24h__icon, .search-list__item__24h__icon {
     height: 10px;
 }
 
