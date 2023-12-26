@@ -2,7 +2,7 @@
 
 ## What is BitCounter?
 
-Bitcounter is a tool for monitoring the market of cryptocurrencies and tracking your investment portfolio!
+**Bitcounter** is a tool for monitoring the market of cryptocurrencies and tracking your investment portfolio!
 
 <img src="./static/Market page.png" width="622.5px"/>
 
