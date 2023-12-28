@@ -15,7 +15,7 @@ class App {
         coinList: [],
         favorites: [],
         chosenCoin: undefined,
-        searchQuery: undefined
+        searchQuery: ''
     }
 
     constructor(){

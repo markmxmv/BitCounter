@@ -82,6 +82,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
+    gap: 60%;
     
 
 }
@@ -91,12 +92,18 @@
     color: gray;
 }
 
+.go-back-to-favorites-button {
+    height: 15px;
+    width: 15px;
+    cursor: pointer;
+}
+
 .favorites-list__header span {
     margin-left: 8px;
     color: gray;
 }
 
-.currencies-list__favorites__scroll, .searchResults {
+.currencies-list__favorites__scroll, .currencies-list__search__scroll {
     height: calc(100% - 75px);
     overflow: scroll;
 }
@@ -222,7 +229,7 @@
     color: rgba(255, 255, 255, 0.636);
 }
 
-.currencies-list__item__wrapper:hover, .favorites-list__item:hover {
+.currencies-list__item__wrapper:hover, .favorites-list__item:hover, .search-list__item:hover {
     background: rgba(53, 53, 53, 0.3);
 }
 
@@ -285,7 +292,7 @@
     text-align: right;
 }
 
-.currencies-list__item__24h__icon__wrapper, .search-list__item__24h__icon__wrapper {
+.currencies-list__item__24h__icon__wrapper {
     flex: 1.5;
     display: flex;
     align-items: center;

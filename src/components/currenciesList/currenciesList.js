@@ -158,6 +158,9 @@ export class CurrenciesList extends AbstractDiv{
             </div>
         </div>
         `
+
+        this.el.querySelector('.currencies-list__search').value = this.appState.searchQuery;
+
         this.el.querySelector('.currencies-list__search').addEventListener('input', (e) => {
             if (e.target.value) {
                 this.el.querySelector('.cancel-search-button').hidden = false;
@@ -187,7 +190,7 @@ export class CurrenciesList extends AbstractDiv{
         }
         this.el.querySelector('.currencies-list__right').appendChild(coinList);
 
-        if (this.appState.searchQuery === undefined || this.appState.searchQuery === '') {
+        if (this.appState.searchQuery === '') {
             if(this.appState.favorites.length == 0) {
                 this.el.querySelector('.currencies-list__left').append(this.renderFavoritesIcon())
             } else {
@@ -209,15 +212,21 @@ export class CurrenciesList extends AbstractDiv{
             const searchHeader = document.createElement('div');
             searchHeader.classList.add('search-list__header');
             searchHeader.innerHTML = `
-            <span>Search results:</span>                `
+            <span>Search results:</span>
+            <img class="go-back-to-favorites-button" src="../../../static/cancel-search.svg"></img>               
+            `
             this.el.querySelector('.currencies-list__left').appendChild(searchHeader);
+            this.el.querySelector('.go-back-to-favorites-button').addEventListener('click', () => {
+                this.el.querySelector('.currencies-list__search').value = '';
+                this.appState.searchQuery = '';
+            })
 
             const searchListItems = this.appState.coinList.filter(el => {
-                return el.id.includes(this.appState.searchQuery) || el.symbol.includes(this.appState.searchQuery)
+                return el.id.toLowerCase().includes(this.appState.searchQuery.toLowerCase()) || el.symbol.toLowerCase().includes(this.appState.searchQuery.toLowerCase())
             });
 
             const searchResults = document.createElement('div');
-            searchResults.classList.add('searchResults');
+            searchResults.classList.add('currencies-list__search__scroll');
             for(const item of searchListItems) {
                     searchResults.append(this.renderSearchItem(item));
                 }
