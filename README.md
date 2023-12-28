@@ -9,7 +9,9 @@
 ## Features of Bitcounter's portfolio manager:
 
 - With **BitCounter** you can find any asset and its values on cryptomarket
-  ![](./static/Search-algo.gif)
+
+  <img src="./static/Search-algo.gif" width="300" height="233" />
+
 - Calculation of the average purchase price of an asset, taking into account the volume of purchase and the exchange rate at the time of the transaction
 - Integrated AI helper
 - The ability to create a profile to which all your portfolio data will be linked. It allows you to use Bitcounter on many devices
