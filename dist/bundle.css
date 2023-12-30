@@ -400,14 +400,21 @@ hr {
 .cryptocurrencies-chart {
     width: fit-content;
     flex: 1;
-    background: linear-gradient(90deg, rgba(39, 39, 39, 0.728) 0%, rgba(0, 0, 0, 0.607) 100%);
-    /* border-left: 0.1px solid gray; */
-    border-radius: 30px;
+    /* background: linear-gradient(90deg, rgba(39, 39, 39, 0.728) 0%, rgba(0, 0, 0, 0.607) 100%); */
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 0.1px solid gray;
+    /* border-radius: 30px; */
+    /* position: relative; */
 
 }
 
 .tv-lightweight-charts {
-    border-radius: 30px;
+    position: relative;
+}
+
+.cryptocurrencies-chart__pair {
+    top: 0;
+    left: 0;
 }
 
 .chart__title__wrapper {

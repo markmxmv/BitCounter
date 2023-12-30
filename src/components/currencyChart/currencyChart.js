@@ -94,7 +94,7 @@ export class CurrencyChart extends AbstractDiv {
         <hr/>
         `;
         const chartOptions = {
-            height: 338,
+            height: 390,
             width: 952,
 
             layout: {
@@ -139,6 +139,10 @@ export class CurrencyChart extends AbstractDiv {
 
         areaSeries.setData(chartData)
         cryptocurrenciesChart.timeScale().fitContent()
+        const pair = document.createElement('div');
+        pair.classList.add('cryptocurrencies-chart__pair');
+        pair.innerHTML = `${this.appState.chosenCoin}/USD`;
+        this.el.querySelector('.tv-lightweight-charts').append(pair)
         console.log(this.appState)
         return this.el;
     }

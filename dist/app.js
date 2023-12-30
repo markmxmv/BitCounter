@@ -1812,7 +1812,7 @@ class CurrencyChart extends AbstractDiv {
         <hr/>
         `;
         const chartOptions = {
-            height: 338,
+            height: 390,
             width: 952,
 
             layout: {
@@ -1857,6 +1857,10 @@ class CurrencyChart extends AbstractDiv {
 
         areaSeries.setData(chartData);
         cryptocurrenciesChart.timeScale().fitContent();
+        const pair = document.createElement('div');
+        pair.classList.add('cryptocurrencies-chart__pair');
+        pair.innerHTML = `${this.appState.chosenCoin}/USD`;
+        this.el.querySelector('.tv-lightweight-charts').append(pair);
         console.log(this.appState);
         return this.el;
     }
@@ -1907,8 +1911,8 @@ class CryptocurrenciesView extends AbstractView {
     }
 
     async loadList() {
-        // const res = await fetch(`../../../static/coinList.json`)
-        const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en');
+        const res = await fetch(`../../../static/coinList.json`);
+        // const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en')
         return res.json()
     }
 
