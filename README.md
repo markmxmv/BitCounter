@@ -9,7 +9,7 @@ It uses CoinGecko public API for fetching crypto markets data. Also it uses Trad
 
 ## Features of Bitcounter's portfolio manager:
 
-- With **BitCounter** you can find any asset and its values on cryptomarket
+- With **BitCounter** you can find **any** asset and its values on cryptomarket
 
   <img src="./static/Search-algo.gif" width="300" height="233" />
 
