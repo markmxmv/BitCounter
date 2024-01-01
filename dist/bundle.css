@@ -113,6 +113,18 @@ hr {
     font-size: 18px;
 }
 
+.currencies-list__search__no-results {
+    height: calc(100% - 50px - 25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.currencies-list__search__no-results div{
+    color: gray;
+
+}
+
 .favorites-icon__wrapper {
     height: calc(75% - 50px);
     width: fit-content;
@@ -413,8 +425,13 @@ hr {
 }
 
 .cryptocurrencies-chart__pair {
-    top: 0;
-    left: 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 25px;
 }
 
 .chart__title__wrapper {

@@ -33,7 +33,9 @@ export class CryptocurrenciesView extends AbstractView {
         }
         if (path == 'searchQuery') {
             console.log('searching')
-            await this.render()
+            await this.render();
+            document.querySelector('.currencies-list__search').focus();
+
         }
 
         if (localStorage.getItem("coinListScrollPosition")) {

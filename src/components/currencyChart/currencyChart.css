@@ -23,8 +23,13 @@
 }
 
 .cryptocurrencies-chart__pair {
-    top: 0;
-    left: 0;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 25px;
 }
 
 .chart__title__wrapper {

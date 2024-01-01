@@ -169,6 +169,9 @@ export class CurrenciesList extends AbstractDiv{
                 if (this.el.querySelector('.cancel-search-button').hidden == false) {
                     this.el.querySelector('.cancel-search-button').hidden = true;
                 }
+                this.appState.searchQuery = '';
+                this.el.querySelector('.currencies-list__search').focus();
+                
             }
         })
 
@@ -225,12 +228,24 @@ export class CurrenciesList extends AbstractDiv{
                 return el.id.toLowerCase().includes(this.appState.searchQuery.toLowerCase()) || el.symbol.toLowerCase().includes(this.appState.searchQuery.toLowerCase())
             });
 
-            const searchResults = document.createElement('div');
-            searchResults.classList.add('currencies-list__search__scroll');
-            for(const item of searchListItems) {
-                    searchResults.append(this.renderSearchItem(item));
-                }
-            this.el.querySelector('.currencies-list__left').appendChild(searchResults)
+            if (searchListItems.length > 0) {
+                const searchResults = document.createElement('div');
+                searchResults.classList.add('currencies-list__search__scroll');
+                for(const item of searchListItems) {
+                        searchResults.append(this.renderSearchItem(item));
+                    }
+                this.el.querySelector('.currencies-list__left').appendChild(searchResults)
+            } else {
+                console.log('no res')
+                const noResults = document.createElement('div');
+                noResults.classList.add('currencies-list__search__no-results');
+                noResults.innerHTML = `
+                    <div>No results for '${this.appState.searchQuery}'</div>
+                `
+                this.el.querySelector('.currencies-list__left').appendChild(noResults)
+
+            }
+
         }
 
         return this.el
