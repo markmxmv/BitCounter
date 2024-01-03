@@ -11,7 +11,9 @@ export class PortfolioView extends AbstractView {
     }
 
     render() {
-        this.renderHeader()
+        this.renderHeader();
+        const portfolio = document.createElement('div');
+        portfolio.classList.add('portfolio-view');
     }
 
     renderHeader() {
