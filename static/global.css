@@ -20,3 +20,8 @@ body {
 .cryptocurrencies-view {
     height: calc(100vh - 88px);
 }
+
+.portfolio-view {
+    height: calc(100vh - 88px);
+    display: flex;
+}

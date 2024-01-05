@@ -523,3 +523,8 @@ hr {
 .positive {
     color: #4ECB71;
 }
+
+.portfolio-side-menu {
+    width: 25%;
+    border-right: 0.1px solid gray;
+}

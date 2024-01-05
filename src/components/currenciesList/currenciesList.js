@@ -170,7 +170,6 @@ export class CurrenciesList extends AbstractDiv{
                     this.el.querySelector('.cancel-search-button').hidden = true;
                 }
                 this.appState.searchQuery = '';
-                this.el.querySelector('.currencies-list__search').focus();
                 
             }
         })

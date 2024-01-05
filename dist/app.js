@@ -1248,7 +1248,6 @@ class CurrenciesList extends AbstractDiv{
                     this.el.querySelector('.cancel-search-button').hidden = true;
                 }
                 this.appState.searchQuery = '';
-                this.el.querySelector('.currencies-list__search').focus();
                 
             }
         });
@@ -1956,6 +1955,41 @@ class CryptocurrenciesView extends AbstractView {
     
 }
 
+class portfolioMain extends AbstractDiv {
+
+    constructor() {
+        super();
+    }
+
+    render() {
+        this.el.classList.add('portfolio-main');
+        this.el.innerHTML = `
+            here will be rendered assests in current portfolio
+        `;
+
+
+        return this.el
+    }
+}
+
+class portfolioSideMenu extends AbstractDiv {
+
+    constructor() {
+        super();
+    }
+
+    render() {
+        this.el.classList.add('portfolio-side-menu');
+        this.el.innerHTML = `
+        here will be list of all your portfolios
+        `;
+        
+
+        return this.el
+    }
+    
+}
+
 class PortfolioView extends AbstractView {
     constructor() {
         super();
@@ -1966,6 +2000,14 @@ class PortfolioView extends AbstractView {
     }
 
     render() {
+        console.log('huy');
+
+        const portfolio = document.createElement('div');
+        portfolio.classList.add('portfolio-view');
+        portfolio.append(new portfolioSideMenu().render());
+        portfolio.append(new portfolioMain().render());
+        this.app.innerHTML = '';
+        this.app.append(portfolio);
         this.renderHeader();
     }
 
