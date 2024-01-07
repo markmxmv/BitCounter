@@ -28,6 +28,9 @@
     "rollup-plugin-import-css": "^3.3.1"
   },
   "dependencies": {
-    "lightweight-charts": "^4.1.0"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "lightweight-charts": "^4.1.0",
+    "request": "^2.88.2"
   }
 }

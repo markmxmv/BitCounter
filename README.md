@@ -3,7 +3,7 @@
 ## What is BitCounter?
 
 **Bitcounter** is a tool for monitoring the market of cryptocurrencies and tracking your investment portfolio!
-It uses CoinGecko public API for fetching crypto markets data. Also it uses TradingView LightWeight Chart API for showing asset price value changing.
+It uses CoinMarketCap API for fetching crypto markets data. Also it uses TradingView LightWeight Chart API for showing asset price value changing.
 
 <img src="./static/Market page.png" width="622.5px"/>
 
