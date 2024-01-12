@@ -14,15 +14,22 @@
 }
 
 .currencies-list__search__wrapper {
+    display: flex;
+    align-items: center;
     position: relative;
     padding: 0;
     margin: 0;
+    border-bottom: 0.1px solid gray;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0 0 0 10px
 }
 
 .cancel-search-button{
-    position:absolute;
-    top: 10px;
-    left:275px;
+    margin-right: 10px;
     width:30px;
     height:30px;
     cursor: pointer;
@@ -34,10 +41,9 @@
     width: 100%;
     background: none;
     border: none;
-    border-bottom: 0.1px solid gray;
     font-weight: 300;
     font-size: 18px;
-    padding: 20px;
+    padding: 20px 5px 20px 10px;
     color: #fff;
 }
 

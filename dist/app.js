@@ -1216,6 +1216,7 @@ class CurrenciesList extends AbstractDiv{
         <div class="currencies-list__wrapper">
             <div class="currencies-list__left">
                 <div class="currencies-list__search__wrapper">
+                    <img class="search-icon" src="../../../static/search-icon.svg"></img>
                     <input type="text" class="currencies-list__search" placeholder="Search crypto"></input>
                     <img class="cancel-search-button" hidden src="../../../static/cancel-search.svg"></img>
                 </div>
@@ -1237,6 +1238,9 @@ class CurrenciesList extends AbstractDiv{
         </div>
         `;
 
+        if (this.appState.searchQuery != '') {
+            this.el.querySelector('.cancel-search-button').hidden = false;
+        }
         this.el.querySelector('.currencies-list__search').value = this.appState.searchQuery;
 
         this.el.querySelector('.currencies-list__search').addEventListener('input', (e) => {
