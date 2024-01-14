@@ -27,7 +27,7 @@
     top: 20px;
     left: 20px;
     color: #fff;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 25px;
 }
@@ -42,7 +42,7 @@
     flex-direction: column;
     justify-content: space-between;
     color: #fff;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     /* border: 0.1px solid gray; */
     border-radius: 30px;
