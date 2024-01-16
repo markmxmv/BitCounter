@@ -23,9 +23,12 @@
   "homepage": "https://github.com/markstopkidding/BitCounter#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.1",
+    "axios": "^1.6.5",
     "on-change": "^4.0.2",
     "rollup": "^3.29.1",
-    "rollup-plugin-import-css": "^3.3.1"
+    "rollup-plugin-import-css": "^3.3.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
