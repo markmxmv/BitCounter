@@ -12,7 +12,7 @@ export class CryptocurrenciesView extends AbstractView {
         this.appState = onChange(this.appState, this.appStateHook.bind(this))
     }
 
-    async appStateHook(path, value) {
+    async appStateHook(path) {
         console.log(path);
         if (document.querySelector('.currencies-list__scroll')) {
             localStorage.setItem("coinListScrollPosition", document.querySelector('.currencies-list__scroll').scrollTop);

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Rich-001",
+    "assets": [
+      {
+        "id": "bitcoin",
+        "symbol": "btc",
+        "name": "BTC",
+        "amount": "1.3"
+      },
+      {
+        "id": "ethereum",
+        "symbol": "eth",
+        "name": "ETH",
+        "amount": "7.4"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Rich-002",
+    "assets": [
+      {
+        "id": "toncoin",
+        "symbol": "ton",
+        "name": "TON",
+        "amount": "125"
+      },
+      {
+        "id": "aptos",
+        "symbol": "apt",
+        "name": "APT",
+        "amount": "1265"
+      }
+    ]
+  }
+]

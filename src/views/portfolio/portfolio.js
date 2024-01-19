@@ -2,10 +2,21 @@ import { AbstractView } from "../../common/abstractView";
 import { Header } from "../../components/header/header";
 import { portfolioMain } from "../../components/portfolioMain/portfolioMain";
 import { portfolioSideMenu } from "../../components/portfolioSideMenu/portfolioSideMenu";
+import onChange from "on-change";
 
 export class PortfolioView extends AbstractView {
-    constructor() {
+    constructor(appState) {
         super();
+        this.appState = appState;
+        this.appState = onChange(this.appState, this.appStateHook.bind(this));
+    }
+
+    appStateHook(path) {
+        if (path == 'chosenPortfolio') {
+            this.render()
+            
+        }
+
     }
 
     destroy() {
@@ -13,12 +24,10 @@ export class PortfolioView extends AbstractView {
     }
 
     render() {
-        console.log('huy')
-
         const portfolio = document.createElement('div');
         portfolio.classList.add('portfolio-view');
-        portfolio.append(new portfolioSideMenu().render());
-        portfolio.append(new portfolioMain().render());
+        portfolio.append(new portfolioSideMenu(this.appState).render());
+        portfolio.append(new portfolioMain(this.appState).render());
         this.app.innerHTML = ''
         this.app.append(portfolio);
         this.renderHeader();

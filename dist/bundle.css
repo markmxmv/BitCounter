@@ -532,4 +532,93 @@ hr {
 .portfolio-side-menu {
     width: 25%;
     border-right: 0.1px solid gray;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.portfolio-side-menu__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    border-bottom: 0.1px solid gray;
+
+}
+
+.portfolio-side-menu__header h2{
+    font-weight: 300;
+    font-size: 30px;
+}
+
+.portfolios-list__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    align-items: center;
+    height: 85%;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.portfolios-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+
+}
+
+.portfolios-list__item {
+    display: flex;
+    height: 50px;
+    border: 0.1px solid gray;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+
+}
+
+.portfolios-list__item:hover {
+    background: rgba(53, 53, 53, 0.3);
+    cursor: pointer;
+}
+
+.portfolios-list__item__name {
+    font-weight: 600;
+}
+
+.portfolios-list__item__worth {
+    font-weight: 600;
+}
+
+.portfolios-list__item__pnl img {
+    height: 10px
+}
+
+.portfolios-list__item__pnl span {
+    font-weight: 100;
+    color: #4ECB71;
+}
+
+.portfolios-list__add-button {
+    width: 80px;
+    height: 50px;
+    border: 0.1px solid gray;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.portfolios-list__add-button:hover {
+    background: rgba(53, 53, 53, 0.3);
+    cursor: pointer;
+}
+
+.portfolios-list__add-button img {
+    height: 30px;
 }
