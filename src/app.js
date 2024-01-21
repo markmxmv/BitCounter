@@ -16,6 +16,7 @@ class App {
         favorites: [],
         chosenCoin: undefined,
         searchQuery: '',
+        portfoliosList: JSON.parse(localStorage.getItem('PORTFOLIOS')),
         chosenPortfolio: undefined
     }
 

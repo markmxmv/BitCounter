@@ -2002,43 +2002,39 @@ class portfolioSideMenu extends AbstractDiv {
         this.appState = appState;
     }
 
-    // getBTC() {
-    //     let response = null;
-    //     new Promise(async (resolve, reject) => {
-    //         try {
-    //             response = await axios.get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=BTC', {
-    //             headers: {
-    //                 'X-CMC_PRO_API_KEY': 'b589e3cd-a710-4e94-9b91-1f03e7bc3e47',
-    //             },
-    //             });
-    //         } catch(ex) {
-    //             response = null;
-    //             // error
-    //             console.log(ex);
-    //             reject(ex);
-    //         }
-    //         if (response) {
-    //             // success
-    //             const json = response.data;
-    //             console.log(json.data.BTC[0].quote);
-    //             resolve(json);
-    //         }
-    //     });
-    // }
-
     createNewPortfolio() {
-    ({
-        id,
-        name,
-        assets: [
-        {
-            id,
-            symbol,
-            name,
-            amount
-        }
-        ]
+
+    const addingPortfolioForm = document.createElement('div');
+    addingPortfolioForm.classList.add('adding-portfolio-form');
+    addingPortfolioForm.innerHTML = `
+    <form>
+        <input name="portfolio-name" placeholder="Portfolio name"></input>
+    </form>
+    <img class="confirm-portfolio" src="../../../static/confirm-portfolio.svg"/>
+    <img class="cancel-portfolio" src="../../../static/cancel-portfolio.svg"/>
+    `;
+
+    addingPortfolioForm.querySelector('.confirm-portfolio').addEventListener('click', (e) => {
+        const form = addingPortfolioForm.querySelector('form');
+        const data = new FormData(form);
+        const portfolioName = data.get('portfolio-name');
+        const newPortfolio = {
+            id: this.appState.portfoliosList.at(-1).id + 1,
+            name: portfolioName,
+            assets: []
+        };
+        const list = this.appState.portfoliosList;
+        list.push(newPortfolio);
+        console.log(newPortfolio);
+        localStorage.setItem('PORTFOLIOS', JSON.stringify(list));
     });
+    
+    addingPortfolioForm.querySelector('.cancel-portfolio').addEventListener('click', () => {
+        this.el.querySelector('.adding-portfolio-form').remove();
+        
+    });
+
+    return addingPortfolioForm
     }
 
     setChosenPortfolio(portfolioId){
@@ -2085,6 +2081,13 @@ class portfolioSideMenu extends AbstractDiv {
         for(let i = 0; i<portfoliosJSON.length; i++) {
             this.el.querySelector('.portfolios-list').append(this.renderPortfoliosListItem(portfoliosJSON[i]));
         }
+
+        this.el.querySelector('.portfolios-list__add-button').addEventListener('click', () => {
+            if(this.el.querySelector('.adding-portfolio-form')) {
+                return
+            }
+            this.el.querySelector('.portfolios-list').append(this.createNewPortfolio());
+        });
         
 
         return this.el
@@ -2103,6 +2106,10 @@ class PortfolioView extends AbstractView {
         if (path == 'chosenPortfolio') {
             this.render();
             
+        }
+
+        if (path == 'portfoliosList') {
+            this.render();
         }
 
     }
@@ -2141,6 +2148,7 @@ class App {
         favorites: [],
         chosenCoin: undefined,
         searchQuery: '',
+        portfoliosList: JSON.parse(localStorage.getItem('PORTFOLIOS')),
         chosenPortfolio: undefined
     }
 

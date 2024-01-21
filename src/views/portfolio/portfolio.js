@@ -17,6 +17,10 @@ export class PortfolioView extends AbstractView {
             
         }
 
+        if (path == 'portfoliosList') {
+            this.render()
+        }
+
     }
 
     destroy() {

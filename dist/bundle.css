@@ -604,6 +604,46 @@ hr {
     color: #4ECB71;
 }
 
+.adding-portfolio-form {
+    display: flex;
+    height: 50px;
+    border: 0.1px solid gray;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.adding-portfolio-form form {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.adding-portfolio-form input {
+    background: none;
+    border: none;
+    border-bottom: 0.1px solid gray;
+    /* border-radius: 10px; */
+    height: 60%;
+    /* padding: 0 10px; */
+    color: white;
+}
+
+.adding-portfolio-form input:focus {
+    outline: none;
+}
+
+.confirm-portfolio:hover {
+    cursor: pointer;
+}
+
+.cancel-portfolio:hover {
+    cursor: pointer;
+}
+
 .portfolios-list__add-button {
     width: 80px;
     height: 50px;
