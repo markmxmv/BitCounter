@@ -1,0 +1,43 @@
+.portfolio-main {
+    width: 75%;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.portfolio-main__top {
+    border-bottom: 0.1px solid gray;
+    height: 50%;
+    width: 100%;
+}
+
+.portfolio-main__bottom {
+    
+}
+
+.portfolio-main__bottom__header {
+    height: 30px;
+    width: 100%;
+    border-bottom: 0.1px solid gray;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.portfolio-main__bottom__assets-list {
+    padding: 0 20px
+
+}
+
+.portfolio-main__bottom__asset {
+    display: flex;
+    height: 50px;
+    /* background: linear-gradient(90deg, rgba(39, 39, 39, 0.612) 0%, rgba(0, 0, 0, 0.607) 100%); */
+    border: 0.1px solid gray;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}

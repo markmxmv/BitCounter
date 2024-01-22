@@ -32,6 +32,7 @@
 .portfolios-list {
     display: flex;
     flex-direction: column;
+    gap: 20px;
     width: 100%;
 
 
@@ -40,10 +41,10 @@
 .portfolios-list__item {
     display: flex;
     height: 50px;
-    border: 0.1px solid gray;
+    background: linear-gradient(90deg, rgba(39, 39, 39, 0.612) 0%, rgba(0, 0, 0, 0.607) 100%);
+    /* border: 0.1px solid gray; */
     border-radius: 20px;
     width: 100%;
-    margin-bottom: 20px;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;

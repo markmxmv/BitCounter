@@ -1968,7 +1968,7 @@ class portfolioMain extends AbstractDiv {
 
     renderAsset(asset) {
         const portfolioAsset = document.createElement('div');
-        portfolioAsset.classList = 'asset';
+        portfolioAsset.classList = 'portfolio-main__bottom__asset';
         portfolioAsset.innerHTML = `${asset}`;
         return portfolioAsset
 
@@ -1977,7 +1977,14 @@ class portfolioMain extends AbstractDiv {
     render() {
         this.el.classList.add('portfolio-main');
         this.el.innerHTML = `
+            <div class="portfolio-main__top">
 
+            </div>
+            <div class="portfolio-main__bottom">
+                <div class="portfolio-main__bottom__header"></div>
+                <div class="portfolio-main__bottom__assets-list"></div>
+
+            </div>
         `;
 
         
@@ -1985,7 +1992,7 @@ class portfolioMain extends AbstractDiv {
             const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.id == this.appState.chosenPortfolio)[0].assets;
             console.log(assets);
             for(let el of assets) {
-                this.el.append(this.renderAsset(el.name));
+                this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el.name));
             }
         }
 
@@ -2023,10 +2030,8 @@ class portfolioSideMenu extends AbstractDiv {
             name: portfolioName,
             assets: []
         };
-        const list = this.appState.portfoliosList;
-        list.push(newPortfolio);
+        this.appState.portfoliosList.push(newPortfolio);
         console.log(newPortfolio);
-        localStorage.setItem('PORTFOLIOS', JSON.stringify(list));
     });
     
     addingPortfolioForm.querySelector('.cancel-portfolio').addEventListener('click', () => {
@@ -2049,9 +2054,9 @@ class portfolioSideMenu extends AbstractDiv {
             <div class="portfolios-list__item__name">${portfolioObj.name}</div>
             <div class="portfolios-list__item__pnl">
                 <img src="../../../static/24h-positive.svg"/>
-                <span>10,4%</span>
+                <span>${portfolioObj.assets.length == 0?'0.0%':'10.4%'}</span>
             </div>
-            <div class="portfolios-list__item__worth">$254573</div>
+            <div class="portfolios-list__item__worth">$${portfolioObj.assets.length == 0?'0':'254573'}</div>
         `;
         portfoliosListItem.addEventListener('click', () => {
             this.setChosenPortfolio(portfoliosListItem.id);
@@ -2109,6 +2114,7 @@ class PortfolioView extends AbstractView {
         }
 
         if (path == 'portfoliosList') {
+            localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
             this.render();
         }
 

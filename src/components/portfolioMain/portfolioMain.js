@@ -10,7 +10,7 @@ export class portfolioMain extends AbstractDiv {
 
     renderAsset(asset) {
         const portfolioAsset = document.createElement('div');
-        portfolioAsset.classList = 'asset';
+        portfolioAsset.classList = 'portfolio-main__bottom__asset';
         portfolioAsset.innerHTML = `${asset}`
         return portfolioAsset
 
@@ -19,7 +19,14 @@ export class portfolioMain extends AbstractDiv {
     render() {
         this.el.classList.add('portfolio-main');
         this.el.innerHTML = `
+            <div class="portfolio-main__top">
 
+            </div>
+            <div class="portfolio-main__bottom">
+                <div class="portfolio-main__bottom__header"></div>
+                <div class="portfolio-main__bottom__assets-list"></div>
+
+            </div>
         `
 
         
@@ -27,7 +34,7 @@ export class portfolioMain extends AbstractDiv {
             const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.id == this.appState.chosenPortfolio)[0].assets;
             console.log(assets);
             for(let el of assets) {
-                this.el.append(this.renderAsset(el.name))
+                this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el.name))
             }
         }
 

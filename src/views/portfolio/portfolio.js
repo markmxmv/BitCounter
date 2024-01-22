@@ -18,6 +18,7 @@ export class PortfolioView extends AbstractView {
         }
 
         if (path == 'portfoliosList') {
+            localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
             this.render()
         }
 
