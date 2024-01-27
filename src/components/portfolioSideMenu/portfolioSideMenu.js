@@ -52,10 +52,8 @@ export class portfolioSideMenu extends AbstractDiv {
         portfoliosListItem.id = portfolioObj.id
         portfoliosListItem.innerHTML = `
             <div class="portfolios-list__item__name">${portfolioObj.name}</div>
-            <div class="portfolios-list__item__pnl">
-                <img src="../../../static/24h-positive.svg"/>
-                <span>${portfolioObj.assets.length == 0?'0.0%':'10.4%'}</span>
-            </div>
+            <div class="portfolios-list__item__pnl__icon"><img src="../../../static/24h-positive.svg"/></div>
+            <div class="portfolios-list__item__pnl">${portfolioObj.assets.length == 0?'0.0%':'10.4%'}</div>
             <div class="portfolios-list__item__worth">$${portfolioObj.assets.length == 0?'0':'254573'}</div>
         `
         portfoliosListItem.addEventListener('click', () => {

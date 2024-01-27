@@ -59,19 +59,32 @@
 
 .portfolios-list__item__name {
     font-weight: 600;
+    flex: 2;
 }
 
 .portfolios-list__item__worth {
+    text-align: right;
     font-weight: 600;
+    flex: 2;
 }
 
-.portfolios-list__item__pnl img {
-    height: 10px
+.portfolios-list__item__pnl__icon {
+    display: flex;
+    justify-content: right;
+    flex: 0.5;
+
 }
 
-.portfolios-list__item__pnl span {
+.portfolios-list__item__pnl__icon img{
+    height: 10px;
+
+}
+
+.portfolios-list__item__pnl {
     font-weight: 100;
     color: #4ECB71;
+    flex: 0.9;
+    text-align: right;
 }
 
 .adding-portfolio-form {
