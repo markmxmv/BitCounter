@@ -612,6 +612,7 @@ hr {
 }
 
 .portfolios-list__item {
+    position: relative;
     display: flex;
     height: 50px;
     background: linear-gradient(90deg, rgba(39, 39, 39, 0.612) 0%, rgba(0, 0, 0, 0.607) 100%);
@@ -620,14 +621,29 @@ hr {
     width: 100%;
     align-items: center;
     justify-content: space-between;
+
+    
     padding: 0 20px;
 
 
 }
 
 .portfolios-list__item:hover {
-    background: rgba(53, 53, 53, 0.3);
+    background: rgba(0, 0, 0, 0.813);
     cursor: pointer;
+}
+
+.portfolios-list__item__left {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolios-list__item__right {
+    display: flex;
+    justify-content: right;
+    flex: 0.1;
 }
 
 .portfolios-list__item__name {
@@ -658,6 +674,36 @@ hr {
     color: #4ECB71;
     flex: 0.9;
     text-align: right;
+}
+
+.portfolios-list__item__options {
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+}
+
+.portfolios-list__item__options:hover {
+    cursor: pointer;
+}
+
+.portfolios-list__item__options img {
+    height: 20px;
+
+}
+
+.portfolios-list__item__options-window {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #4ECB71;
 }
 
 .adding-portfolio-form {

@@ -2051,13 +2051,26 @@ class portfolioSideMenu extends AbstractDiv {
         portfoliosListItem.classList.add('portfolios-list__item');
         portfoliosListItem.id = portfolioObj.id;
         portfoliosListItem.innerHTML = `
+        <div class="portfolios-list__item__left">
             <div class="portfolios-list__item__name">${portfolioObj.name}</div>
             <div class="portfolios-list__item__pnl__icon"><img src="../../../static/24h-positive.svg"/></div>
             <div class="portfolios-list__item__pnl">${portfolioObj.assets.length == 0?'0.0%':'10.4%'}</div>
             <div class="portfolios-list__item__worth">$${portfolioObj.assets.length == 0?'0':'254573'}</div>
+        </div>
+        <div class="portfolios-list__item__right">
+            <button class="portfolios-list__item__options"><img src="../../../static/portfolio-options.svg"/></button>
+        </div>
         `;
-        portfoliosListItem.addEventListener('click', () => {
+        portfoliosListItem.querySelector('.portfolios-list__item__left').addEventListener('click', () => {
             this.setChosenPortfolio(portfoliosListItem.id);
+        });
+        portfoliosListItem.querySelector('.portfolios-list__item__right').addEventListener('click', () => {
+            const optionsWindow = document.createElement('div');
+            optionsWindow.classList.add('portfolios-list__item__options-window');
+            optionsWindow.innerHTML = `
+                <div>Delete</div>
+            `;
+            portfoliosListItem.querySelector('.portfolios-list__item__right').append(optionsWindow);
         });
         return portfoliosListItem
 
