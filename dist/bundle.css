@@ -739,7 +739,7 @@ hr {
     align-items: center;
 }
 
-.adding-portfolio-form input {
+.adding-portfolio-form__input {
     background: none;
     border: none;
     border-bottom: 0.1px solid gray;
@@ -747,10 +747,16 @@ hr {
     height: 60%;
     /* padding: 0 10px; */
     color: white;
+    transition: border-bottom 0.5s;
 }
 
-.adding-portfolio-form input:focus {
+.adding-portfolio-form__input:focus {
     outline: none;
+}
+
+.error {
+    border-bottom: 0.1px solid red;
+    transition: all 0.5s;
 }
 
 .confirm-portfolio:hover {
