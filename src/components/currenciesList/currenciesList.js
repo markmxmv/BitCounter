@@ -246,7 +246,6 @@ export class CurrenciesList extends AbstractDiv{
                     <div>No results for '${this.appState.searchQuery}'</div>
                 `
                 this.el.querySelector('.currencies-list__left').appendChild(noResults)
-
             }
 
         }

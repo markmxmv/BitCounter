@@ -1,3 +1,12 @@
+button {
+    background: none;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 .portfolio-side-menu {
     width: 25%;
     border-right: 0.1px solid gray;
@@ -86,6 +95,29 @@
     flex: 2;
 }
 
+.portfolios-list__item__rename {
+    display: flex;
+
+}
+
+.portfolios-list__item__rename__input {
+    font-weight: 10;
+    flex: 2;
+    background: none;
+    color: white;
+    border: none;
+    border-bottom: 0.1px solid gray;
+}
+
+.portfolios-list__item__rename__input:focus {
+    outline: none
+}
+
+.portfolios-list__item__rename__cancel img {
+    height: 13px
+}
+
+
 .portfolios-list__item__worth {
     text-align: right;
     font-weight: 600;
@@ -128,22 +160,33 @@
     border-radius: 5px;
 }
 
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 30px;
+}
+
+.portfolios-list__item__options-window__rename {
+    border-radius: 10px 10px 0 0;
+}
+
+.portfolios-list__item__options-window__delete {
+    border-radius: 0 0 10px 10px;
+}
+
 
 .portfolios-list__item__options-window {
     position: absolute;
     top: 30px;
     right: 0px;
-    width: 80px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 10px;
     border: 0.1px solid gray;
     background: rgb(36, 36, 36)
 }
 
-.portfolios-list__item__options-window:hover {
+.option:hover {
     cursor: pointer;
     background: rgb(55, 55, 55)
 }
