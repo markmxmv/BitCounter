@@ -11,13 +11,22 @@ export class PortfolioView extends AbstractView {
         this.appState = onChange(this.appState, this.appStateHook.bind(this));
     }
 
-    appStateHook(path) {
+    appStateHook(path, value) {
         if (path == 'chosenPortfolio') {
             this.render()
             
         }
 
         if (path == 'portfoliosList') {
+            for(let i = 0; i<this.appState.portfoliosList.length; i++) {
+                this.appState.portfoliosList[i].id = i+1;
+            }
+            localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
+            this.render()
+        }
+
+        if (path == 'changingPortfolio' && value == true) {
+            this.appState.changingPortfolio = false;
             localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
             this.render()
         }

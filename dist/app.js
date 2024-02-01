@@ -1989,7 +1989,6 @@ class portfolioMain extends AbstractDiv {
         
         if(this.appState.chosenPortfolio) {
             const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.id == this.appState.chosenPortfolio)[0].assets;
-            console.log(assets);
             for(let el of assets) {
                 this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el.name));
             }
@@ -2018,7 +2017,7 @@ class portfolioSideMenu extends AbstractDiv {
     <img class="cancel-portfolio" src="../../../static/cancel-portfolio.svg"/>
     `;
 
-    addingPortfolioForm.querySelector('.confirm-portfolio').addEventListener('click', (e) => {
+    addingPortfolioForm.querySelector('.confirm-portfolio').addEventListener('click', () => {
         const portfolioName = this.el.querySelector('.adding-portfolio-form__input').value;
         console.log(portfolioName);
         if (portfolioName == '') {
@@ -2107,42 +2106,50 @@ class portfolioSideMenu extends AbstractDiv {
             this.appState.portfoliosList = this.appState.portfoliosList.filter(el => el.id!=portfoliosListItem.id);
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-window__rename').addEventListener('click', () => {
-            portfoliosListItem.querySelector('.portfolios-list__item__name').hidden = true;
-            portfoliosListItem.querySelector('.portfolios-list__item__pnl__icon').hidden = true;
-            portfoliosListItem.querySelector('.portfolios-list__item__pnl__icon').querySelector('img').hidden = true;
-            portfoliosListItem.querySelector('.portfolios-list__item__pnl').hidden = true;
-            portfoliosListItem.querySelector('.portfolios-list__item__worth').hidden = true;
-            portfoliosListItem.querySelector('.portfolios-list__item__options-window').hidden = true;
-
+            console.log(this.appState);
             const rename = document.createElement('div');
             rename.classList.add('portfolios-list__item__rename');
             rename.innerHTML = `
-                <input class="portfolios-list__item__rename__input" value="${portfolioObj.name}" placeholder="Write new name"></input>
-                <button class="portfolios-list__item__rename__confirm"><img src="../../../static/confirm-rename.svg"/></button>
-                <button class="portfolios-list__item__rename__cancel"><img src="../../../static/cancel-rename.svg"/></button>
-
+            <input class="portfolios-list__item__rename__input" value="${portfolioObj.name}" placeholder="Write new name"></input>
+            <button class="portfolios-list__item__rename__confirm"><img src="../../../static/confirm-rename.svg"/></button>
+            <button class="portfolios-list__item__rename__cancel"><img src="../../../static/cancel-rename.svg"/></button>
             `;
+            
+            portfoliosListItem.querySelector('.portfolios-list__item').replaceWith(rename);
+            rename.querySelector('input').focus();
+            portfoliosListItem.querySelector('.portfolios-list__item__options-window').remove();
+            
             rename.querySelector('.portfolios-list__item__rename__cancel').addEventListener('click', () => {
-                portfoliosListItem.querySelector('.portfolios-list__item__name').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__pnl__icon').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__pnl__icon').querySelector('img').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__pnl').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__worth').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__rename').remove();
+                this.render();
             });
+            
             rename.querySelector('.portfolios-list__item__rename__confirm').addEventListener('click', () => {
-                console.log(portfoliosListItem.querySelector('.portfolios-list__item__rename__input').value);
-                this.appState.portfoliosList[portfolioObj.id] = portfoliosListItem.querySelector('.portfolios-list__item__rename__input').value;
-                portfoliosListItem.querySelector('.portfolios-list__item__name').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__pnl__icon').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__pnl__icon').querySelector('img').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__pnl').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__worth').hidden = false;
-                portfoliosListItem.querySelector('.portfolios-list__item__rename').remove();
+                const portfolioNewName = rename.querySelector('input').value;
+                if (portfolioNewName == '') {
+                    rename.querySelector('input').classList.add('error');
+                    setTimeout(() => {
+                    rename.querySelector('input').classList.remove('error');
+                    }, 500);
+                    return
+                }
+                this.appState.portfoliosList[portfolioObj.id - 1].name = portfoliosListItem.querySelector('.portfolios-list__item__rename__input').value;
+                this.appState.changingPortfolio = true;
             });
 
-
-            portfoliosListItem.querySelector('.portfolios-list__item__left').prepend(rename);
+            rename.querySelector('.portfolios-list__item__rename__input').addEventListener('keydown', (e) => {
+                if(e.code == 'Enter') {
+                    const portfolioNewName = rename.querySelector('input').value;
+                    if (portfolioNewName == '') {
+                        rename.querySelector('input').classList.add('error');
+                        setTimeout(() => {
+                            rename.querySelector('input').classList.remove('error');
+                        }, 500);
+                        return
+                    }
+                    this.appState.portfoliosList[portfolioObj.id - 1].name = portfoliosListItem.querySelector('.portfolios-list__item__rename__input').value;
+                    this.appState.changingPortfolio = true;
+                }
+            });
         });
 
         return portfoliosListItem
@@ -2191,13 +2198,22 @@ class PortfolioView extends AbstractView {
         this.appState = onChange(this.appState, this.appStateHook.bind(this));
     }
 
-    appStateHook(path) {
+    appStateHook(path, value) {
         if (path == 'chosenPortfolio') {
             this.render();
             
         }
 
         if (path == 'portfoliosList') {
+            for(let i = 0; i<this.appState.portfoliosList.length; i++) {
+                this.appState.portfoliosList[i].id = i+1;
+            }
+            localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
+            this.render();
+        }
+
+        if (path == 'changingPortfolio' && value == true) {
+            this.appState.changingPortfolio = false;
             localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
             this.render();
         }
@@ -2239,6 +2255,7 @@ class App {
         chosenCoin: undefined,
         searchQuery: '',
         portfoliosList: JSON.parse(localStorage.getItem('PORTFOLIOS')),
+        changingPortfolio: false,
         chosenPortfolio: undefined
     }
 

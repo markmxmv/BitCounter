@@ -670,16 +670,26 @@ button:hover {
 
 .portfolios-list__item__rename {
     display: flex;
+    height: 50px;
+    border: 0.1px solid gray;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
 
 }
 
 .portfolios-list__item__rename__input {
-    font-weight: 10;
-    flex: 2;
     background: none;
-    color: white;
     border: none;
     border-bottom: 0.1px solid gray;
+    /* border-radius: 10px; */
+    height: 60%;
+    /* padding: 0 10px; */
+    color: white;
+    transition: border-bottom 0.5s;
 }
 
 .portfolios-list__item__rename__input:focus {
@@ -774,12 +784,6 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-}
-
-.adding-portfolio-form form {
-    height: 100%;
-    display: flex;
-    align-items: center;
 }
 
 .adding-portfolio-form__input {
