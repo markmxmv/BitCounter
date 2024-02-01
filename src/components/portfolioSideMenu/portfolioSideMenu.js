@@ -80,28 +80,38 @@ export class portfolioSideMenu extends AbstractDiv {
         <div class="portfolios-list__item">
             <div class="portfolios-list__item__left">
                 <div class="portfolios-list__item__name">${portfolioObj.name}</div>
-                <div class="portfolios-list__item__pnl__icon"><img src="../../../static/24h-positive.svg"/></div>
-                <div class="portfolios-list__item__pnl">${portfolioObj.assets.length == 0?'0.0%':'10.4%'}</div>
+                <div class="portfolios-list__item__pnl__wrapper">
+                    <div class="portfolios-list__item__pnl">
+                        <div class="portfolios-list__item__pnl__icon"><img src="../../../static/24h-positive.svg"/></div>
+                        <span>${portfolioObj.assets.length == 0?'0.0%':'10.4%'}</span>
+                    </div>
+                </div>
                 <div class="portfolios-list__item__worth">$${portfolioObj.assets.length == 0?'0':'254573'}</div>
             </div>
             <div class="portfolios-list__item__right">
                 <button class="portfolios-list__item__options-button"><img src="../../../static/portfolio-options.svg"/></button>
             </div>
         </div>
-        <div class="portfolios-list__item__options-window" hidden>
-            <div class="portfolios-list__item__options-window__rename option">Rename</div>
-            <hr/>
-            <div class="portfolios-list__item__options-window__delete option">Delete</div>
-
+        <div class="portfolios-list__item__options-window__wrapper" hidden>
+            <div class="portfolios-list__item__options-window">
+                <button class="portfolios-list__item__options-window__rename option">Rename</button>
+                <button class="portfolios-list__item__options-window__delete option">Delete</button>
+            </div>
         </div>
         `
         portfoliosListItem.querySelector('.portfolios-list__item__left').addEventListener('click', () => {
             this.setChosenPortfolio(portfoliosListItem.id);
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-button').addEventListener('click', () => {
-            if(portfoliosListItem.querySelector('.portfolios-list__item__options-window').hidden == true) {
-                portfoliosListItem.querySelector('.portfolios-list__item__options-window').hidden = false
-            } else {portfoliosListItem.querySelector('.portfolios-list__item__options-window').hidden = true}
+            if(portfoliosListItem.querySelector('.portfolios-list__item__options-window__wrapper').hidden == true) {
+                portfoliosListItem.querySelector('.portfolios-list__item__options-window__wrapper').hidden = false;
+                portfoliosListItem.querySelector('.portfolios-list__item__pnl__wrapper').hidden = true;
+                portfoliosListItem.querySelector('.portfolios-list__item__worth').hidden = true;
+            } else {
+                portfoliosListItem.querySelector('.portfolios-list__item__options-window__wrapper').hidden = true
+                portfoliosListItem.querySelector('.portfolios-list__item__pnl__wrapper').hidden = false;
+                portfoliosListItem.querySelector('.portfolios-list__item__worth').hidden = false;
+            }
             
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-window__delete').addEventListener('click', () => {
