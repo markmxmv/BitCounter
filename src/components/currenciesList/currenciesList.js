@@ -243,8 +243,9 @@ export class CurrenciesList extends AbstractDiv{
                 const noResults = document.createElement('div');
                 noResults.classList.add('currencies-list__search__no-results');
                 noResults.innerHTML = `
-                    <div>No results for '${this.appState.searchQuery}'</div>
+                    <div></div>
                 `
+                noResults.querySelector('div').innerText = `No results for '${this.appState.searchQuery}'`
                 this.el.querySelector('.currencies-list__left').appendChild(noResults)
             }
 

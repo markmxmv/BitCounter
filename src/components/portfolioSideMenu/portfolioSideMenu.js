@@ -31,7 +31,7 @@ export class portfolioSideMenu extends AbstractDiv {
         }
         const newPortfolio = {
             id: this.appState.portfoliosList.length>0?this.appState.portfoliosList.at(-1).id + 1:1,
-            name: portfolioName.length>8?portfolioName.slice(0,7)+'...':portfolioName,
+            name: portfolioName,
             assets: []
         }
         this.appState.portfoliosList.push(newPortfolio);
@@ -50,7 +50,7 @@ export class portfolioSideMenu extends AbstractDiv {
             }
             const newPortfolio = {
                 id: this.appState.portfoliosList.length>0?this.appState.portfoliosList.at(-1).id + 1:1,
-                name: portfolioName.length>8?portfolioName.slice(0,7)+'...':portfolioName,
+                name: portfolioName,
                 assets: []
             }
             this.appState.portfoliosList.push(newPortfolio);
@@ -79,7 +79,7 @@ export class portfolioSideMenu extends AbstractDiv {
         portfoliosListItem.innerHTML = `
         <div class="portfolios-list__item">
             <div class="portfolios-list__item__left">
-                <div class="portfolios-list__item__name">${portfolioObj.name}</div>
+                <div class="portfolios-list__item__name"></div>
                 <div class="portfolios-list__item__pnl__wrapper">
                     <div class="portfolios-list__item__pnl">
                         <div class="portfolios-list__item__pnl__icon"><img src="../../../static/24h-positive.svg"/></div>
@@ -99,6 +99,8 @@ export class portfolioSideMenu extends AbstractDiv {
             </div>
         </div>
         `
+
+        portfoliosListItem.querySelector('.portfolios-list__item__name').innerText = `${portfolioObj.name.length>8?portfolioObj.name.slice(0,7)+'...':portfolioObj.name}`
         portfoliosListItem.querySelector('.portfolios-list__item__left').addEventListener('click', () => {
             this.setChosenPortfolio(portfoliosListItem.id);
         });
@@ -122,13 +124,14 @@ export class portfolioSideMenu extends AbstractDiv {
             const rename = document.createElement('div');
             rename.classList.add('portfolios-list__item__rename');
             rename.innerHTML = `
-            <input class="portfolios-list__item__rename__input" value="${portfolioObj.name}" placeholder="Write new name"></input>
+            <input class="portfolios-list__item__rename__input" placeholder="Write new name"></input>
             <button class="portfolios-list__item__rename__confirm"><img src="../../../static/confirm-rename.svg"/></button>
             <button class="portfolios-list__item__rename__cancel"><img src="../../../static/cancel-rename.svg"/></button>
             `
             
             portfoliosListItem.querySelector('.portfolios-list__item').replaceWith(rename);
-            rename.querySelector('input').focus()
+            rename.querySelector('input').value = `${portfolioObj.name}`;
+            rename.querySelector('input').focus();
             portfoliosListItem.querySelector('.portfolios-list__item__options-window').remove();
             
             rename.querySelector('.portfolios-list__item__rename__cancel').addEventListener('click', () => {
@@ -144,7 +147,8 @@ export class portfolioSideMenu extends AbstractDiv {
                     }, 500);
                     return
                 }
-                this.appState.portfoliosList[portfolioObj.id - 1].name = portfoliosListItem.querySelector('.portfolios-list__item__rename__input').value;
+                
+                this.appState.portfoliosList[portfolioObj.id - 1].name = portfolioNewName;
                 this.appState.changingPortfolio = true;
             })
 
@@ -158,7 +162,7 @@ export class portfolioSideMenu extends AbstractDiv {
                         }, 500);
                         return
                     }
-                    this.appState.portfoliosList[portfolioObj.id - 1].name = portfoliosListItem.querySelector('.portfolios-list__item__rename__input').value;
+                    this.appState.portfoliosList[portfolioObj.id - 1].name = portfolioNewName.length>8?portfolioNewName.slice(0,7)+'...':portfolioNewName;
                     this.appState.changingPortfolio = true;
                 }
             })

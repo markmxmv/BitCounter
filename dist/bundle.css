@@ -755,8 +755,12 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
+    width: 65px;
     height: 30px;
+    color: gray;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 0;
 }
 
 .portfolios-list__item__options-window {
@@ -767,12 +771,6 @@ button:hover {
     right: 30px;
     color: gray;
     transition: all 1s;
-}
-
-.option {
-    color: gray;
-    font-size: 17px;
-    font-weight: 500;
 }
 
 .option:hover {
