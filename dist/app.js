@@ -1967,9 +1967,30 @@ class portfolioMain extends AbstractDiv {
     }
 
     renderAsset(asset) {
+
+        const name = asset.name.toUpperCase();
+        const img = this.appState.coinList.find(el => el.symbol == asset.symbol).image;
+        const price = this.appState.coinList.find(el => el.symbol == asset.symbol).current_price;
+        const amount = asset.amount;
+        const dailyChange = this.appState.coinList.find(el => el.symbol == asset.symbol).price_change_percentage_24h.toFixed(1);
+        console.log(price);
         const portfolioAsset = document.createElement('div');
         portfolioAsset.classList = 'portfolio-main__bottom__asset';
-        portfolioAsset.innerHTML = `${asset}`;
+        portfolioAsset.innerHTML = `
+            <span class="portfolio-main__bottom__asset__number">${asset.id}</span>
+            <div class="portfolio-main__bottom__asset__name__wrapper">
+                <img src="${img}"class="portfolio-main__bottom__asset__name__logo"/>
+                <span class="portfolio-main__bottom__asset__name">${asset.name}</span>
+            </div>
+            
+            <span class="portfolio-main__bottom__asset__24h ${dailyChange < 0 ? 'negative' : 'positive'}">${dailyChange}%</span>
+            <span class="portfolio-main__bottom__asset__amount">${amount} ${name}</span>
+            <span class="portfolio-main__bottom__asset__average-price">-</span>
+            <span class="portfolio-main__bottom__asset__price">${price}</span>
+            <span class="portfolio-main__bottom__asset__worth">$${(price * amount).toFixed(2)}</span>
+            <div class="portfolio-main__bottom__asset__dummy"></div>
+
+        `;
         return portfolioAsset
 
     }
@@ -1981,7 +2002,16 @@ class portfolioMain extends AbstractDiv {
 
             </div>
             <div class="portfolio-main__bottom">
-                <div class="portfolio-main__bottom__header"></div>
+                <div class="portfolio-main__bottom__header">
+                    <span class="portfolio-main__bottom__header__number">#</span>
+                    <span class="portfolio-main__bottom__header__name">Name</span>
+                    <span class="portfolio-main__bottom__header__24h">24h%</span>
+                    <span class="portfolio-main__bottom__header__amount">Amount</span>
+                    <span class="portfolio-main__bottom__header__average-price">Average price</span>
+                    <span class="portfolio-main__bottom__header__price">Price</span>
+                    <span class="portfolio-main__bottom__header__worth">Worth</span>
+                    <div class="portfolio-main__bottom__header__dummy"></div>
+                </div>
                 <div class="portfolio-main__bottom__assets-list"></div>
 
             </div>
@@ -1991,7 +2021,7 @@ class portfolioMain extends AbstractDiv {
         if(this.appState.chosenPortfolio) {
             const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.id == this.appState.chosenPortfolio)[0].assets;
             for(let el of assets) {
-                this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el.name));
+                this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el));
             }
         }
 
@@ -2239,8 +2269,15 @@ class PortfolioView extends AbstractView {
         this.app.innerHTML = '';
     }
 
-    render() {
+    async loadList() {
+        const res = await fetch(`../../../static/coinList.json`);
+        // const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en')
+        return res.json()
+    }
+
+    async render() {
         const portfolio = document.createElement('div');
+        this.appState.coinList = await this.loadList();
         portfolio.classList.add('portfolio-view');
         portfolio.append(new portfolioSideMenu(this.appState).render());
         portfolio.append(new portfolioMain(this.appState).render());

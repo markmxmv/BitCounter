@@ -540,10 +540,6 @@ hr {
     width: 100%;
 }
 
-.portfolio-main__bottom {
-    
-}
-
 .portfolio-main__bottom__header {
     height: 30px;
     width: 100%;
@@ -551,11 +547,61 @@ hr {
     color: #fff;
     font-size: 13px;
     font-weight: 500;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-main__bottom__header__number, .portfolio-main__bottom__asset__number {
+    flex: 0.7;
+    text-align: center;
+}
+
+.portfolio-main__bottom__header__name__wrapper, .portfolio-main__bottom__asset__name {
+    flex: 1;
+    text-align: left;
+}
+
+.portfolio-main__bottom__header__name__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+
+.portfolio-main__bottom__asset__name__logo {
+    height: 20px;
+}
+
+.portfolio-main__bottom__header__24h, .portfolio-main__bottom__asset__24h {
+    flex: 2;
+    text-align: right;
+}
+
+.portfolio-main__bottom__header__amount, .portfolio-main__bottom__asset__amount {
+    flex: 3;
+    text-align: right;
+}
+
+.portfolio-main__bottom__header__average-price, .portfolio-main__bottom__asset__average-price {
+    flex: 3;
+    text-align: right;
+}
+
+.portfolio-main__bottom__header__worth, .portfolio-main__bottom__asset__worth {
+    flex: 2;
+    text-align: right;
+}
+
+.portfolio-main__bottom__header__price, .portfolio-main__bottom__asset__price {
+    flex: 2;
+    text-align: right;
+}
+
+.portfolio-main__bottom__header__dummy, .portfolio-main__bottom__asset__dummy {
+    flex: 0.5;
 }
 
 .portfolio-main__bottom__assets-list {
-    padding: 0 20px
 
 }
 
@@ -563,13 +609,10 @@ hr {
     display: flex;
     height: 50px;
     /* background: linear-gradient(90deg, rgba(39, 39, 39, 0.612) 0%, rgba(0, 0, 0, 0.607) 100%); */
-    border: 0.1px solid gray;
-    border-radius: 20px;
+    border-bottom: 0.1px solid gray;
     width: 100%;
-    margin-bottom: 20px;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
 }
 button {
     background: none;

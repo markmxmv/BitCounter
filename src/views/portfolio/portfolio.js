@@ -37,8 +37,15 @@ export class PortfolioView extends AbstractView {
         this.app.innerHTML = '';
     }
 
-    render() {
+    async loadList() {
+        const res = await fetch(`../../../static/coinList.json`)
+        // const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en')
+        return res.json()
+    }
+
+    async render() {
         const portfolio = document.createElement('div');
+        this.appState.coinList = await this.loadList();
         portfolio.classList.add('portfolio-view');
         portfolio.append(new portfolioSideMenu(this.appState).render());
         portfolio.append(new portfolioMain(this.appState).render());
