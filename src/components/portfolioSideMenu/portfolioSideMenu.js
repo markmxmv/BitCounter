@@ -183,9 +183,9 @@ export class portfolioSideMenu extends AbstractDiv {
             <div class="portfolios-list">
                 
             </div>
-            <div class="portfolios-list__add-button">
+            <button class="portfolios-list__add-button">
                 <img class="add-icon" src="../../../static/add-portfolio-icon.svg"/>
-            </div>
+            </button>
         </div>
         `
         // this.getBTC()

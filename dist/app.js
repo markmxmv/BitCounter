@@ -1978,17 +1978,14 @@ class portfolioMain extends AbstractDiv {
         portfolioAsset.classList = 'portfolio-main__bottom__asset';
         portfolioAsset.innerHTML = `
             <span class="portfolio-main__bottom__asset__number">${asset.id}</span>
-            <div class="portfolio-main__bottom__asset__name__wrapper">
-                <img src="${img}"class="portfolio-main__bottom__asset__name__logo"/>
-                <span class="portfolio-main__bottom__asset__name">${asset.name}</span>
-            </div>
-            
+            <div class="portfolio-main__bottom__asset__name__logo__wrapper"><img src="${img}"class="portfolio-main__bottom__asset__name__logo"/></div>
+            <span class="portfolio-main__bottom__asset__name">${asset.name}</span>
             <span class="portfolio-main__bottom__asset__24h ${dailyChange < 0 ? 'negative' : 'positive'}">${dailyChange}%</span>
             <span class="portfolio-main__bottom__asset__amount">${amount} ${name}</span>
             <span class="portfolio-main__bottom__asset__average-price">-</span>
             <span class="portfolio-main__bottom__asset__price">${price}</span>
             <span class="portfolio-main__bottom__asset__worth">$${(price * amount).toFixed(2)}</span>
-            <div class="portfolio-main__bottom__asset__dummy"></div>
+            <button class="portfolio-main__bottom__asset__history"><img src="../../../static/asset-history-button.svg"/></button>
 
         `;
         return portfolioAsset
@@ -2010,9 +2007,14 @@ class portfolioMain extends AbstractDiv {
                     <span class="portfolio-main__bottom__header__average-price">Average price</span>
                     <span class="portfolio-main__bottom__header__price">Price</span>
                     <span class="portfolio-main__bottom__header__worth">Worth</span>
-                    <div class="portfolio-main__bottom__header__dummy"></div>
+                    <div class="portfolio-main__bottom__header__history"></div>
                 </div>
-                <div class="portfolio-main__bottom__assets-list"></div>
+                <div class="portfolio-main__bottom__assets-list__wrapper">
+                    <div class="portfolio-main__bottom__assets-list"></div>
+                    <button class="portfolio-main__bottom__add-button">
+                        <img class="add-icon" src="../../../static/add-portfolio-icon.svg"/>
+                    </button>
+                </div>
 
             </div>
         `;
@@ -2212,9 +2214,9 @@ class portfolioSideMenu extends AbstractDiv {
             <div class="portfolios-list">
                 
             </div>
-            <div class="portfolios-list__add-button">
+            <button class="portfolios-list__add-button">
                 <img class="add-icon" src="../../../static/add-portfolio-icon.svg"/>
-            </div>
+            </button>
         </div>
         `;
         // this.getBTC()
@@ -2308,7 +2310,7 @@ class App {
         searchQuery: '',
         portfoliosList: JSON.parse(localStorage.getItem('PORTFOLIOS')),
         changingPortfolio: false,
-        chosenPortfolio: undefined
+        chosenPortfolio: JSON.parse(localStorage.getItem('PORTFOLIOS')).length > 0 ? 1 : undefined
     }
 
     constructor(){

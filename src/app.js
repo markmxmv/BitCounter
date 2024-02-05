@@ -18,7 +18,7 @@ class App {
         searchQuery: '',
         portfoliosList: JSON.parse(localStorage.getItem('PORTFOLIOS')),
         changingPortfolio: false,
-        chosenPortfolio: undefined
+        chosenPortfolio: JSON.parse(localStorage.getItem('PORTFOLIOS')).length > 0 ? 1 : undefined
     }
 
     constructor(){

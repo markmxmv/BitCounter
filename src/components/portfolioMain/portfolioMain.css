@@ -27,19 +27,36 @@
     text-align: center;
 }
 
-.portfolio-main__bottom__header__name__wrapper, .portfolio-main__bottom__asset__name {
+.portfolio-main__bottom__header__name, .portfolio-main__bottom__asset__name {
     flex: 1;
     text-align: left;
 }
 
-.portfolio-main__bottom__header__name__wrapper {
+.portfolio-main__bottom__assets-list__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.portfolio-main__bottom__assets-list {
+    width: 100%;
+}
+
+.portfolio-main__bottom__asset__name__logo__wrapper {
+    flex: 0.4;
     display: flex;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
+}
+
+.portfolio-main__bottom__asset__name {
+    flex: 0.6;
 }
 
 .portfolio-main__bottom__asset__name__logo {
-    height: 20px;
+    height: 19.5px;
 }
 
 .portfolio-main__bottom__header__24h, .portfolio-main__bottom__asset__24h {
@@ -67,15 +84,25 @@
     text-align: right;
 }
 
-.portfolio-main__bottom__header__dummy, .portfolio-main__bottom__asset__dummy {
-    flex: 0.5;
+.portfolio-main__bottom__header__history, .portfolio-main__bottom__asset__history {
+    flex: 0.7;
 }
 
-.portfolio-main__bottom__assets-list {
+.portfolio-main__bottom__asset__history {
+    padding: 0;
+    background: none;
+}
 
+.portfolio-main__bottom__asset__history img {
+    height: 19.5px;
+}
+
+.portfolio-main__bottom__asset__history:hover {
+    filter: brightness(0) invert(1);
 }
 
 .portfolio-main__bottom__asset {
+    font-weight: 300;
     display: flex;
     height: 50px;
     /* background: linear-gradient(90deg, rgba(39, 39, 39, 0.612) 0%, rgba(0, 0, 0, 0.607) 100%); */
@@ -83,4 +110,21 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
+}
+
+.portfolio-main__bottom__asset:hover, .portfolio-main__bottom__add-button:hover {
+    background: rgba(53, 53, 53, 0.3);
+    cursor: pointer;
+}
+
+.portfolio-main__bottom__add-button {
+    width: 80px;
+    height: 50px;
+    background: none;
+    border: 0.1px solid gray;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }

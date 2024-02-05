@@ -174,8 +174,7 @@ button:hover {
 
 .portfolios-list__item__options-button:hover {
     cursor: pointer;
-    background-color: rgba(52, 52, 52, 0.701);
-    border-radius: 5px;
+    filter: brightness(0) invert(1);
 }
 
 .option {
@@ -239,15 +238,18 @@ button:hover {
 
 .confirm-portfolio:hover {
     cursor: pointer;
+    filter: brightness(0) invert(1);
 }
 
 .cancel-portfolio:hover {
     cursor: pointer;
+    filter: brightness(0) invert(1);
 }
 
 .portfolios-list__add-button {
     width: 80px;
     height: 50px;
+    background: none;
     border: 0.1px solid gray;
     border-radius: 20px;
     display: flex;
