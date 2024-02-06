@@ -658,6 +658,139 @@ hr {
     align-items: center;
     margin-top: 20px;
 }
+
+.asset-history {
+    
+    animation: appear 0.2s forwards;
+}
+
+.asset-history_disappear {
+    animation: disappear 0.2s forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.asset-history__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+
+
+.asset-history__window {
+    position: relative;
+    width: 40%;
+    height: 50%;
+    background: black;
+    border-radius: 30px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.asset-history__window__close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+}
+
+.asset-history__window__close-button img {
+    height: 30px
+    
+}
+
+.asset-history__window__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 30px;
+}
+
+.asset-history__window__title__logo img{
+    height: 40px;
+}
+
+.asset-history__window__title__name {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.asset-history__window__table__header {
+    display: flex;
+    align-items: center;
+    border-top: 0.1px solid gray;
+    border-bottom: 0.1px solid gray;
+    height: 30px;
+
+}
+
+.asset-history__window__table__header__date {
+    flex: 1;
+    text-align: center;
+}
+
+.asset-history__window__table__header__amount {
+    flex: 1;
+    text-align: center;
+}
+
+.asset-history__window__table__header__price {
+    flex: 1;
+    text-align: center;
+}
+
+.asset-history__window__table__list__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1px solid gray;
+    height: 50px;
+}
+
+.asset-history__window__table__list__item__date {
+    flex: 1;
+    text-align: center;
+}
+
+.asset-history__window__table__list__item__amount {
+    flex: 1;
+    text-align: center;
+}
+
+.asset-history__window__table__list__item__price {
+    flex: 1;
+    text-align: center;
+}
 button {
     background: none;
     border: none;

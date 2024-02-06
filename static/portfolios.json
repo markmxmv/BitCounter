@@ -7,13 +7,25 @@
         "id": "1",
         "symbol": "btc",
         "name": "BTC",
-        "amount": "1.3"
+        "history": [
+          {
+            "date": "19.04.2006",
+            "amount": "1.3",
+            "price": "9384"
+          }
+        ]
       },
       {
         "id": "2",
         "symbol": "eth",
         "name": "ETH",
-        "amount": "7.4"
+        "history": [
+          {
+            "date": "19.04.2006",
+            "amount": "7.4",
+            "price": "1550"
+          }
+        ]
       }
     ]
   },
@@ -25,13 +37,30 @@
         "id": "1",
         "symbol": "ton",
         "name": "TON",
-        "amount": "125"
+        "history": [
+          {
+            "date": "19.04.2006",
+            "amount": "125",
+            "price": "1.99"
+          },
+          {
+            "date": "23.04.2006",
+            "amount": "134",
+            "price": "1.7"
+          }
+        ]
       },
       {
         "id": "2",
         "symbol": "apt",
         "name": "APT",
-        "amount": "1265"
+        "history": [
+          {
+            "date": "19.04.2006",
+            "amount": "1265",
+            "price": "4.77"
+          }
+        ]
       }
     ]
   }

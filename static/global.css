@@ -4,8 +4,10 @@
 }
 
 #root {
+    position: relative;
     max-width: 1512px;
     margin: auto;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
