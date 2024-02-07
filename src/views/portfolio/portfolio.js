@@ -22,6 +22,12 @@ export class PortfolioView extends AbstractView {
                 this.appState.portfoliosList[i].id = i+1;
             }
             localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
+            if(this.appState.portfoliosList.length == 0) {
+                this.appState.chosenPortfolio = undefined;
+            }
+            if(!this.appState.portfoliosList.find(el => el.name == this.appState.chosenPortfolio)) {
+                this.appState.chosenPortfolio = undefined;
+            }
             this.render()
         }
 

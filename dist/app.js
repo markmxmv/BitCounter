@@ -2082,10 +2082,9 @@ class portfolioMain extends AbstractDiv {
 
             </div>
         `;
-
         
         if(this.appState.chosenPortfolio) {
-            const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.id == this.appState.chosenPortfolio)[0].assets;
+            const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.name == this.appState.chosenPortfolio)[0].assets;
             for(let el of assets) {
                 this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el));
             }
@@ -2156,15 +2155,18 @@ class portfolioSideMenu extends AbstractDiv {
     
     
     addingPortfolioForm.querySelector('.cancel-portfolio').addEventListener('click', () => {
-        this.el.querySelector('.adding-portfolio-form').remove();
+        setTimeout(() => {
+            this.el.querySelector('.adding-portfolio-form').remove();
+        }, 200);
+        addingPortfolioForm.classList.add('adding-portfolio-form_disappear');
         
     });
 
     return addingPortfolioForm
     }
 
-    setChosenPortfolio(portfolioId){
-        this.appState.chosenPortfolio = portfolioId;
+    setChosenPortfolio(name){
+        this.appState.chosenPortfolio = name;
     }
 
     renderPortfoliosListItem(portfolioObj) {
@@ -2197,7 +2199,7 @@ class portfolioSideMenu extends AbstractDiv {
 
         portfoliosListItem.querySelector('.portfolios-list__item__name').innerText = `${portfolioObj.name.length>8?portfolioObj.name.slice(0,7)+'...':portfolioObj.name}`;
         portfoliosListItem.querySelector('.portfolios-list__item__left').addEventListener('click', () => {
-            this.setChosenPortfolio(portfoliosListItem.id);
+            this.setChosenPortfolio(portfolioObj.name);
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-button').addEventListener('click', () => {
             if(portfoliosListItem.querySelector('.portfolios-list__item__options-window__wrapper').hidden == true) {
@@ -2320,6 +2322,12 @@ class PortfolioView extends AbstractView {
                 this.appState.portfoliosList[i].id = i+1;
             }
             localStorage.setItem('PORTFOLIOS', JSON.stringify(this.appState.portfoliosList));
+            if(this.appState.portfoliosList.length == 0) {
+                this.appState.chosenPortfolio = undefined;
+            }
+            if(!this.appState.portfoliosList.find(el => el.name == this.appState.chosenPortfolio)) {
+                this.appState.chosenPortfolio = undefined;
+            }
             this.render();
         }
 
@@ -2374,7 +2382,9 @@ class App {
         searchQuery: '',
         portfoliosList: JSON.parse(localStorage.getItem('PORTFOLIOS')),
         changingPortfolio: false,
-        chosenPortfolio: JSON.parse(localStorage.getItem('PORTFOLIOS')).length > 0 ? 1 : undefined
+        // chosenPortfolio: JSON.parse(localStorage.getItem('PORTFOLIOS')).length > 0 ? 1 : undefined
+        chosenPortfolio: undefined
+
     }
 
     constructor(){

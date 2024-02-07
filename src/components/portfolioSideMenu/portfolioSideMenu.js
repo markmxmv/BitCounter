@@ -61,15 +61,18 @@ export class portfolioSideMenu extends AbstractDiv {
     
     
     addingPortfolioForm.querySelector('.cancel-portfolio').addEventListener('click', () => {
-        this.el.querySelector('.adding-portfolio-form').remove()
+        setTimeout(() => {
+            this.el.querySelector('.adding-portfolio-form').remove()
+        }, 200);
+        addingPortfolioForm.classList.add('adding-portfolio-form_disappear')
         
     })
 
     return addingPortfolioForm
     }
 
-    setChosenPortfolio(portfolioId){
-        this.appState.chosenPortfolio = portfolioId;
+    setChosenPortfolio(name){
+        this.appState.chosenPortfolio = name;
     }
 
     renderPortfoliosListItem(portfolioObj) {
@@ -102,7 +105,7 @@ export class portfolioSideMenu extends AbstractDiv {
 
         portfoliosListItem.querySelector('.portfolios-list__item__name').innerText = `${portfolioObj.name.length>8?portfolioObj.name.slice(0,7)+'...':portfolioObj.name}`
         portfoliosListItem.querySelector('.portfolios-list__item__left').addEventListener('click', () => {
-            this.setChosenPortfolio(portfoliosListItem.id);
+            this.setChosenPortfolio(portfolioObj.name);
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-button').addEventListener('click', () => {
             if(portfoliosListItem.querySelector('.portfolios-list__item__options-window__wrapper').hidden == true) {

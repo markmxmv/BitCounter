@@ -124,10 +124,9 @@ export class portfolioMain extends AbstractDiv {
 
             </div>
         `
-
         
         if(this.appState.chosenPortfolio) {
-            const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.id == this.appState.chosenPortfolio)[0].assets;
+            const assets = JSON.parse(localStorage.getItem("PORTFOLIOS")).filter(el => el.name == this.appState.chosenPortfolio)[0].assets;
             for(let el of assets) {
                 this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el))
             }
