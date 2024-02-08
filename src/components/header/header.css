@@ -33,6 +33,7 @@
     color: #fff;
     text-decoration: none;
     height: 100%;
+    border-bottom: 0px solid #4ecb7100;
     transition: all 0.2s;
 }
 

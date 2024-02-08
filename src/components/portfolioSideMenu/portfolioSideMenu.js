@@ -120,7 +120,7 @@ export class portfolioSideMenu extends AbstractDiv {
             
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-window__delete').addEventListener('click', () => {
-            this.appState.portfoliosList = this.appState.portfoliosList.filter(el => el.id!=portfoliosListItem.id)
+            this.appState.portfoliosList = this.appState.portfoliosList.filter(el => el.name!=portfolioObj.name)
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-window__rename').addEventListener('click', () => {
             console.log(this.appState)

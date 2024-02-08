@@ -1966,6 +1966,73 @@ class portfolioMain extends AbstractDiv {
         this.appState = appState;
     }
 
+    createNewAsset() {
+        const addingAssetForm = document.createElement('div');
+        addingAssetForm.classList.add('adding-asset-form');
+        addingAssetForm.innerHTML = `
+            <div class="portfolio-main__bottom__asset__number">1</div>
+            <input class="adding-asset-form__input adding-asset-form__name" placeholder="Asset name" autocomplete="off"></input>
+            <div class="portfolio-main__bottom__asset__24h ">0</div>
+            <input class="adding-asset-form__input adding-asset-form__amount" placeholder="Amount" autocomplete="off"></input>
+            <div class="portfolio-main__bottom__asset__average-price">-</div>
+            <input class="adding-asset-form__input adding-asset-form__price" placeholder="Price" autocomplete="off"></input>
+            <button class="confirm-asset"><img src="../../../static/confirm-portfolio.svg"/></button>
+            <button class="cancel-asset"><img src="../../../static/cancel-portfolio.svg"/></button>
+        `;
+
+        // addingAssetForm.querySelector('.confirm-portfolio').addEventListener('click', () => {
+        //     const portfolioName = this.el.querySelector('.adding-portfolio-form__input').value;
+        //     console.log(portfolioName)
+        //     if (portfolioName == '') {
+        //         addingAssetForm.querySelector('input').classList.add('error');
+        //         setTimeout(() => {
+        //             addingAssetForm.querySelector('input').classList.remove('error');
+        //         }, 500);
+        //         return
+        //     }
+        //     const newPortfolio = {
+        //         id: this.appState.portfoliosList.length>0?this.appState.portfoliosList.at(-1).id + 1:1,
+        //         name: portfolioName,
+        //         assets: []
+        //     }
+        //     this.appState.portfoliosList.push(newPortfolio);
+        //     console.log(newPortfolio);
+        // })
+
+        // addingAssetForm.querySelector('.adding-portfolio-form__input').addEventListener('keydown', (e) => {
+        //     if (e.code == 'Enter') {
+        //         const portfolioName = this.el.querySelector('.adding-portfolio-form__input').value;
+        //         if (portfolioName == '') {
+        //             addingAssetForm.querySelector('input').classList.add('error');
+        //             setTimeout(() => {
+        //                 addingAssetForm.querySelector('input').classList.remove('error');
+        //             }, 500);
+        //             return
+        //         }
+        //         const newPortfolio = {
+        //             id: this.appState.portfoliosList.length>0?this.appState.portfoliosList.at(-1).id + 1:1,
+        //             name: portfolioName,
+        //             assets: []
+        //         }
+        //         this.appState.portfoliosList.push(newPortfolio);
+        //         console.log(newPortfolio);
+        //     }
+        // })
+
+        
+        
+        // addingAssetForm.querySelector('.cancel-portfolio').addEventListener('click', () => {
+        //     setTimeout(() => {
+        //         this.el.querySelector('.adding-portfolio-form').remove()
+        //     }, 200);
+        //     addingAssetForm.classList.add('adding-portfolio-form_disappear')
+            
+        // })
+
+        return addingAssetForm
+    }
+        
+
     getAssetAmount(history) {
         let resValue = 0;
         for(let i = 0; i<history.length; i++) {
@@ -2089,6 +2156,13 @@ class portfolioMain extends AbstractDiv {
                 this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.renderAsset(el));
             }
         }
+
+        this.el.querySelector('.portfolio-main__bottom__add-button').addEventListener('click', () => {
+            if(this.el.querySelector('.adding-asset-form')) {
+                return
+            }            this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.createNewAsset());
+            this.el.querySelector('.adding-asset-form__input').focus();
+        });
 
 
 
@@ -2214,7 +2288,7 @@ class portfolioSideMenu extends AbstractDiv {
             
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-window__delete').addEventListener('click', () => {
-            this.appState.portfoliosList = this.appState.portfoliosList.filter(el => el.id!=portfoliosListItem.id);
+            this.appState.portfoliosList = this.appState.portfoliosList.filter(el => el.name!=portfolioObj.name);
         });
         portfoliosListItem.querySelector('.portfolios-list__item__options-window__rename').addEventListener('click', () => {
             console.log(this.appState);

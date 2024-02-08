@@ -127,6 +127,58 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.adding-asset-form {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1px solid gray;
+}
+
+.adding-asset-form__input {
+    border: 0.1px solid gray;
+    border-radius: 10px;
+    background: none;
+    height: 30px;
+    color: white;
+    padding: 10px
+}
+
+.adding-asset-form__input:focus {
+    outline: none;
+}
+
+.adding-asset-form__name {
+    flex: 1;
+}
+
+.adding-asset-form__amount {
+    flex: 3;
+}
+
+.adding-asset-form__price {
+    flex: 2;
+}
+
+.confirm-asset {
+    padding:0;
+    flex: 2;
+}
+
+.confirm-asset img {
+    height: 20px;
+}
+
+.cancel-asset {
+    padding: 0;
+    flex: 0.7;
+}
+
+.cancel-asset img {
+    height: 20px;
 }
 
 .asset-history {
@@ -170,9 +222,6 @@
     justify-content: center;
     
 }
-
-
-
 
 .asset-history__window {
     position: relative;
