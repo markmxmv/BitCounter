@@ -12,11 +12,8 @@ export class portfolioMain extends AbstractDiv {
         const addingAssetForm = document.createElement('div');
         addingAssetForm.classList.add('adding-asset-form');
         addingAssetForm.innerHTML = `
-            <div class="portfolio-main__bottom__asset__number">1</div>
             <input class="adding-asset-form__input adding-asset-form__name" placeholder="Asset name" autocomplete="off"></input>
-            <div class="portfolio-main__bottom__asset__24h ">0</div>
             <input class="adding-asset-form__input adding-asset-form__amount" placeholder="Amount" autocomplete="off"></input>
-            <div class="portfolio-main__bottom__asset__average-price">-</div>
             <input class="adding-asset-form__input adding-asset-form__price" placeholder="Price" autocomplete="off"></input>
             <button class="confirm-asset"><img src="../../../static/confirm-portfolio.svg"/></button>
             <button class="cancel-asset"><img src="../../../static/cancel-portfolio.svg"/></button>
