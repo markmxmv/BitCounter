@@ -130,6 +130,33 @@
     transition: background 0.2s;
 }
 
+.portfolio-main__bottom__add-button_up {
+    animation: up 0.2s;
+}
+
+.portfolio-main__bottom__add-button_down {
+    animation: down 0.2s;
+}
+
+@keyframes up {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(0, -50px);
+    }
+}
+
+@keyframes down {
+    0% {
+        transform: translate(0);
+    }
+
+    100% {
+        transform: translate(0, 50px);
+    }
+}
+
 .adding-asset-form {
     height: 50px;
     width: 100%;
@@ -138,6 +165,7 @@
     justify-content: space-around;
     /* gap: 30px; */
     border-bottom: 0.1px solid gray;
+    animation: appear 0.2s forwards;
 }
 
 .adding-asset-form__input {
@@ -179,6 +207,10 @@
 
 .cancel-asset img {
     height: 18px;
+}
+
+.adding-asset-form_disappear {
+    animation: disappear 0.2s forwards;
 }
 
 .asset-history {

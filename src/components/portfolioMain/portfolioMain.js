@@ -60,13 +60,15 @@ export class portfolioMain extends AbstractDiv {
 
         
         
-        // addingAssetForm.querySelector('.cancel-portfolio').addEventListener('click', () => {
-        //     setTimeout(() => {
-        //         this.el.querySelector('.adding-portfolio-form').remove()
-        //     }, 200);
-        //     addingAssetForm.classList.add('adding-portfolio-form_disappear')
+        addingAssetForm.querySelector('.cancel-asset').addEventListener('click', () => {
+            addingAssetForm.classList.add('adding-asset-form_disappear')
+            this.el.querySelector('.portfolio-main__bottom__add-button').classList.add('portfolio-main__bottom__add-button_up')
+            setTimeout(() => {
+                this.el.querySelector('.adding-asset-form').remove();
+                this.el.querySelector('.portfolio-main__bottom__add-button').classList.remove('portfolio-main__bottom__add-button_up')
+            }, 200);
             
-        // })
+        })
 
         return addingAssetForm
     }
@@ -200,8 +202,15 @@ export class portfolioMain extends AbstractDiv {
             if(this.el.querySelector('.adding-asset-form')) {
                 return
             };
-            this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.createNewAsset());
-            this.el.querySelector('.adding-asset-form__input').focus();
+
+            this.el.querySelector('.portfolio-main__bottom__add-button').classList.add('portfolio-main__bottom__add-button_down')
+
+            setTimeout(() => {
+                this.el.querySelector('.portfolio-main__bottom__add-button').classList.remove('portfolio-main__bottom__add-button_down')
+                this.el.querySelector('.portfolio-main__bottom__assets-list').append(this.createNewAsset());
+                this.el.querySelector('.adding-asset-form__input').focus();
+            }, 200);
+
         })
 
 
