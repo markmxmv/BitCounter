@@ -696,7 +696,16 @@ hr {
     justify-content: space-around;
     /* gap: 30px; */
     border-bottom: 0.1px solid gray;
-    animation: appear 0.2s forwards;
+    animation: asset-form-appear 0.2s forwards;
+}
+
+@keyframes asset-form-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .adding-asset-form__input {
@@ -707,6 +716,12 @@ hr {
     color: white;
     padding: 10px;
     min-width: 0;
+    transition: border 0.5s;
+}
+
+.adding-asset-form_error {
+    border: 1px solid red;
+    transition: border 0.5s;
 }
 
 .adding-asset-form__input:focus {
@@ -741,19 +756,19 @@ hr {
 }
 
 .adding-asset-form_disappear {
-    animation: disappear 0.2s forwards;
+    animation: history-disappear 0.2s forwards;
 }
 
 .asset-history {
     
-    animation: appear 0.2s forwards;
+    animation: history-appear 0.2s forwards;
 }
 
 .asset-history_disappear {
-    animation: disappear 0.2s forwards;
+    animation: history-disappear 0.2s forwards;
 }
 
-@keyframes appear {
+@keyframes history-appear {
     from {
         opacity: 0;
     }
@@ -763,7 +778,7 @@ hr {
     }
 }
 
-@keyframes disappear {
+@keyframes history-disappear {
     from {
         opacity: 1;
     }
@@ -1089,24 +1104,26 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    animation: appear 0.2s forwards;
+    animation: portfolio-form-appear 0.2s forwards;
 }
 
 .adding-portfolio-form_disappear {
-    animation: disappear 0.2s forwards;
+    animation: portfolio-form-disappear 0.2s forwards;
 }
 
-@keyframes appear {
+@keyframes portfolio-form-appear {
     from {
         opacity: 0;
+        transform: translate(0, -50px);
     }
 
     to {
         opacity: 1;
+        transform: translate(0);
     }
 }
 
-@keyframes disappear {
+@keyframes portfolio-form-disappear {
     from {
         opacity: 1;
     }

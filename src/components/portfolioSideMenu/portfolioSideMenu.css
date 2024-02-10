@@ -214,24 +214,26 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    animation: appear 0.2s forwards;
+    animation: portfolio-form-appear 0.2s forwards;
 }
 
 .adding-portfolio-form_disappear {
-    animation: disappear 0.2s forwards;
+    animation: portfolio-form-disappear 0.2s forwards;
 }
 
-@keyframes appear {
+@keyframes portfolio-form-appear {
     from {
         opacity: 0;
+        transform: translate(0, -50px);
     }
 
     to {
         opacity: 1;
+        transform: translate(0);
     }
 }
 
-@keyframes disappear {
+@keyframes portfolio-form-disappear {
     from {
         opacity: 1;
     }

@@ -1966,6 +1966,41 @@ class portfolioMain extends AbstractDiv {
         this.appState = appState;
     }
 
+    getSymbolAndNameOfAsset(assetName) {
+        const symbol = this.appState.coinList.filter(el => el.id == assetName.toLowerCase())[0];
+        const name = this.appState.coinList.filter(el => el.symbol == assetName.toLowerCase())[0];
+        if(name) {
+            return name
+        } else if(symbol) {
+            return symbol
+        }
+    }
+
+    isAssetNameTrue(assetName) {
+        const symbol = this.appState.coinList.filter(el => el.id == assetName.toLowerCase())[0];
+        const name = this.appState.coinList.filter(el => el.symbol == assetName.toLowerCase())[0];
+
+        if(symbol || name) {
+            return true
+        }
+
+        return false
+    }
+
+    getDate() {
+        const date = new Date();
+        let day = date.getDate();
+        if(day<10) {
+            day = `0${day}`;
+        }
+        let month = date.getMonth();
+        if(month<10) {
+            month = `0${month}`;
+        }
+        let year = date.getFullYear();
+        return `${day}.${month}.${year}`
+    }
+
     createNewAsset() {
         const addingAssetForm = document.createElement('div');
         addingAssetForm.classList.add('adding-asset-form');
@@ -1977,24 +2012,78 @@ class portfolioMain extends AbstractDiv {
             <button class="cancel-asset"><img src="../../../static/cancel-portfolio.svg"/></button>
         `;
 
-        // addingAssetForm.querySelector('.confirm-portfolio').addEventListener('click', () => {
-        //     const portfolioName = this.el.querySelector('.adding-portfolio-form__input').value;
-        //     console.log(portfolioName)
-        //     if (portfolioName == '') {
-        //         addingAssetForm.querySelector('input').classList.add('error');
-        //         setTimeout(() => {
-        //             addingAssetForm.querySelector('input').classList.remove('error');
-        //         }, 500);
-        //         return
-        //     }
-        //     const newPortfolio = {
-        //         id: this.appState.portfoliosList.length>0?this.appState.portfoliosList.at(-1).id + 1:1,
-        //         name: portfolioName,
-        //         assets: []
-        //     }
-        //     this.appState.portfoliosList.push(newPortfolio);
-        //     console.log(newPortfolio);
-        // })
+        addingAssetForm.querySelector('.confirm-asset').addEventListener('click', () => {
+            const assetName = this.el.querySelector('.adding-asset-form__name');
+            const assetAmount = this.el.querySelector('.adding-asset-form__amount');
+            const assetPrice = this.el.querySelector('.adding-asset-form__price');
+            const assetInputs = [assetName, assetAmount, assetPrice];
+            let assetInputError = false;
+            console.log(Number(assetAmount.value)/2);
+            for(let input of assetInputs) {
+                if (input.value == '' || input.value == undefined) {
+                    console.log(input);
+                    input.classList.add('adding-asset-form_error');
+                    setTimeout(() => {
+                        input.classList.remove('adding-asset-form_error');
+                    }, 500);
+                    assetInputError = true;
+                }
+            }
+            
+            if(this.isAssetNameTrue(assetName.value) == false) {
+                assetName.classList.add('adding-asset-form_error');
+                setTimeout(() => {
+                    assetName.classList.remove('adding-asset-form_error');
+                }, 500);
+                assetInputError = true;
+            }
+            if(isNaN(Number(assetAmount.value)/2)) {
+                assetAmount.classList.add('adding-asset-form_error');
+                setTimeout(() => {
+                    assetAmount.classList.remove('adding-asset-form_error');
+                }, 500);
+                assetInputError = true;
+            }
+            // add check for zero and dots
+            if(isNaN(Number(assetPrice.value)/2)) {
+                assetPrice.classList.add('adding-asset-form_error');
+                setTimeout(() => {
+                    assetPrice.classList.remove('adding-asset-form_error');
+                }, 500);
+                assetInputError = true;
+            }
+            // add check for zero and dots
+
+            if(assetInputError == true) {
+                return
+            }
+
+            const chosenPortfolioLength = this.appState.portfoliosList.filter(el => el.name == this.appState.chosenPortfolio)[0].assets.length;
+            const newSymbolAndNameOfAsset = this.getSymbolAndNameOfAsset(assetName.value);
+
+            const newAssetObj = {
+                id: chosenPortfolioLength + 1,
+                symbol: newSymbolAndNameOfAsset.symbol,
+                name: newSymbolAndNameOfAsset.name,
+                history: [
+                {
+                    date: this.getDate(),
+                    amount: assetAmount.value,
+                    price: assetPrice.value
+                }
+                ]
+            };
+
+            if(this.appState.portfoliosList.filter(el => el.name == this.appState.chosenPortfolio)[0].assets.filter(el => el.symbol == newAssetObj.symbol).length > 0) {
+                this.appState.portfoliosList.filter(el => el.name == this.appState.chosenPortfolio)[0].assets.filter(el => el.symbol == newAssetObj.symbol)[0].history.push(newAssetObj.history[0]);
+            this.appState.changingPortfolio = true;
+
+            } else {
+                this.appState.portfoliosList.filter(el => el.name == this.appState.chosenPortfolio)[0].assets.push(newAssetObj);
+                this.appState.changingPortfolio = true;
+            }
+
+        });
 
         // addingAssetForm.querySelector('.adding-portfolio-form__input').addEventListener('keydown', (e) => {
         //     if (e.code == 'Enter') {
@@ -2057,7 +2146,7 @@ class portfolioMain extends AbstractDiv {
 
     renderAsset(asset) {
         const assetId = asset.id;
-        const assetName = asset.name.toUpperCase();
+        const assetName = asset.symbol.toUpperCase();
         const assetImg = this.appState.coinList.find(el => el.symbol == asset.symbol).image;
         const assetPrice = this.appState.coinList.find(el => el.symbol == asset.symbol).current_price;
         const assetAmount = this.getAssetAmount(asset.history);
@@ -2069,7 +2158,7 @@ class portfolioMain extends AbstractDiv {
             <div class="portfolio-main__bottom__asset__name__logo__wrapper"><img src="${assetImg}"class="portfolio-main__bottom__asset__name__logo"/></div>
             <span class="portfolio-main__bottom__asset__name">${assetName}</span>
             <span class="portfolio-main__bottom__asset__24h ${assetDailyChange < 0 ? 'negative' : 'positive'}">${assetDailyChange}%</span>
-            <span class="portfolio-main__bottom__asset__amount">${assetAmount} ${assetName}</span>
+            <span class="portfolio-main__bottom__asset__amount">${assetAmount.toFixed(1)} ${assetName}</span>
             <span class="portfolio-main__bottom__asset__average-price">-</span>
             <span class="portfolio-main__bottom__asset__price">$${assetPrice}</span>
             <span class="portfolio-main__bottom__asset__worth">$${(assetPrice * assetAmount).toFixed(2)}</span>
