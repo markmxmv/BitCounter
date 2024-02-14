@@ -4,6 +4,19 @@ import axios from 'axios'
 
 export class portfolioSideMenu extends AbstractDiv {
 
+    calculateWorth(portfolioObj) {
+        let res = 0;
+
+        for(let i = 0; i<portfolioObj.assets.length; i++) {
+            for(let j = 0; j<portfolioObj.assets[i].history.length; j++) {
+                res+=portfolioObj.assets[i].history[j].amount * this.appState.coinList.find(el => el.symbol == portfolioObj.assets[i].symbol).current_price
+            }
+        }
+
+        return res.toFixed(0)
+
+    }
+
     constructor(appState) {
         super();
         this.appState = appState;
@@ -89,7 +102,7 @@ export class portfolioSideMenu extends AbstractDiv {
                         <span>${portfolioObj.assets.length == 0?'0.0%':'10.4%'}</span>
                     </div>
                 </div>
-                <div class="portfolios-list__item__worth">$${portfolioObj.assets.length == 0?'0':'254573'}</div>
+                <div class="portfolios-list__item__worth">$${portfolioObj.assets.length == 0?'0':this.calculateWorth(portfolioObj)}</div>
             </div>
             <div class="portfolios-list__item__right">
                 <button class="portfolios-list__item__options-button"><img src="../../../static/portfolio-options.svg"/></button>
