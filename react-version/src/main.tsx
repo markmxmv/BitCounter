@@ -1,10 +1,35 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Main from "./pages/Main/Main.tsx";
+import Layout from "./layout/Layout/Layout.tsx";
+import Portfolio from "./pages/portfolio/Portfolio.tsx";
+import About from "./pages/About/About.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Main />
+      },
+      {
+        path: "/portfolio",
+        element: <Portfolio />
+      },
+      {
+        path: "/about",
+        element: <About />
+      }
+    ]
+  }
+]);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
