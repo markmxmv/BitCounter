@@ -6,6 +6,7 @@ import Main from "./pages/Main/Main.tsx";
 import Layout from "./layout/Layout/Layout.tsx";
 import Portfolio from "./pages/portfolio/Portfolio.tsx";
 import About from "./pages/About/About.tsx";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
