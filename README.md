@@ -18,8 +18,6 @@ It uses CoinGecko API for fetching crypto markets data. Also it uses TradingView
 - Integrated AI helper
 - The ability to create a profile to which all your portfolio data will be linked. It allows you to use Bitcounter on many devices
 
-## Project roadmap
+## Project status
 
-- [x] ~~_Creating "Cryptocurrencies market" page_~~
-- [ ] _Creating "Portfolio" page_
-- [ ] _Creating "About" page_
+_Migrating from Vanilla JS to React.js_
