@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const coinListSlice = createSlice({
   name: "coinList",
-  reducer: {
-    add
-  }
+  initialState: [],
+  reducers: {}
 });
+
+export default coinListSlice.reducer;
+export const coinListActions = coinListSlice.actions;

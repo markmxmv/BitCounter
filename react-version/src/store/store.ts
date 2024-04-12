@@ -1,7 +1,7 @@
-import { compose, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
-  reducer: {
-    compose
-  }
+  reducer: {}
 });
+
+export default store;
