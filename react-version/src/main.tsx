@@ -7,7 +7,7 @@ import Layout from "./layout/Layout/Layout.tsx";
 import Portfolio from "./pages/Portfolio/Portfolio.tsx";
 import About from "./pages/About/About.tsx";
 import { Provider } from "react-redux";
-import store from "./store/store.ts";
+import { store } from "./store/store.ts";
 
 const router = createBrowserRouter([
   {

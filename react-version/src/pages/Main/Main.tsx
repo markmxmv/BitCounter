@@ -1,21 +1,23 @@
-import axios from "axios";
+import { useEffect } from "react";
 import CoinPlate from "../../components/CoinPlate/CoinPlate";
 import styles from "./Main.module.css";
-
-const loadList = async () => {
-  const { data } = await axios.get(`/src/assets/coinList.json`);
-  console.log(data);
-};
+import { loadList } from "../../store/coinList.slice";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
 
 function Main() {
-  loadList();
+  const list = useSelector((state: RootState) => state.coinList.list);
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(loadList());
+  }, [dispatch]);
 
   return (
     <div className={styles["main-page"]}>
       <div className={styles["currency-chart"]}>
         <CoinPlate />
       </div>
-      <div></div>
+      <div>{JSON.stringify(list)}</div>
     </div>
   );
 }
