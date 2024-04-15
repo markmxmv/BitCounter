@@ -14,10 +14,11 @@ function Main() {
 
   return (
     <div className={styles["main-page"]}>
-      <div className={styles["currency-chart"]}>
+      <div className={styles["top"]}>
         <CoinPlate />
+        <div className={styles.test}></div>
       </div>
-      <div>{JSON.stringify(list)}</div>
+      <div className={styles["bottom"]}>{JSON.stringify(list)}</div>
     </div>
   );
 }

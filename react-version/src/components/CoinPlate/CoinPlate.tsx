@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
 import styles from "./CoinPlate.module.css";
 import cn from "classnames";
+import { RootState } from "../../store/store";
 
 function CoinPlate() {
+  const coinList = useSelector((state: RootState) => state.coinList);
+
   function getNegativeOrPositivePercentage(change: number) {
     if (change < 0) {
       return "negative";
