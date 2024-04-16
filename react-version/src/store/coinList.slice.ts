@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { coinData } from "../interfaces/coinData.interface";
+import { ICoinList } from "../interfaces/coinList.interface";
 
 export const loadList = createAsyncThunk(
   "load-list",
@@ -14,13 +15,7 @@ export const loadList = createAsyncThunk(
   }
 );
 
-interface init {
-  isLoading: boolean;
-  list: coinData[];
-  error: null;
-}
-
-const initialState: init = {
+const initialState: ICoinList = {
   isLoading: false,
   list: [],
   error: null
