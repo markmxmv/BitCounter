@@ -4,14 +4,9 @@
 
 .top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.test {
-    height: 355px;
-    width: 800px;
-    background: red;
+    justify-content: space-between;
+    height: 390px;
 }
 
 .bottom {

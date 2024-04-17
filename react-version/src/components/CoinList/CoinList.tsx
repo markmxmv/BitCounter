@@ -1,9 +1,11 @@
+
+import styles from './CoinList.module.css';
+
 function CoinList() {
-  return (
-    <>
-      <div>Coin List</div>
-    </>
-  );
-}
+
+    return (
+        <>CoinList</>
+    );
+};
 
 export default CoinList;
