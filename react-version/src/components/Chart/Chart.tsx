@@ -3,14 +3,14 @@ import axios from 'axios';
 import styles from './Chart.module.css';
 
 import { createChart } from 'lightweight-charts';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IChartData, IChartDataConverted } from '../../interfaces/chartData.interface';
 
 function Chart() {
     
     const [data, setData] = useState<IChartDataConverted[]>([]);
     const chartContainerRef = useRef<HTMLDivElement>(null!);
-    const convertDate = (seconds) => {
+    const convertDate = (seconds: number) => {
         const day = new Date(seconds).getDate();
         let month: string|number = new Date(seconds).getMonth();
         if(month < 10) {
@@ -24,17 +24,13 @@ function Chart() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Make a GET request to your API endpoint
                 const {data} = await axios.get<IChartData>('/src/assets/bitcoin-history.json');
-                const coinHistory: IChartDataConverted[] = [
-                    { time: convertDate(data.prices[0][0]), value: Number(data.prices[0][1]) },
-                    { time: convertDate(data.prices[1][0]), value: Number(data.prices[1][1]) },
-                    { time: convertDate(data.prices[2][0]), value: Number(data.prices[2][1]) },
-                    { time: convertDate(data.prices[3][0]), value: Number(data.prices[3][1]) },
-                    { time: convertDate(data.prices[4][0]), value: Number(data.prices[4][1]) },
-                    { time: convertDate(data.prices[5][0]), value: Number(data.prices[5][1]) },
-                    { time: convertDate(data.prices[7][0]), value: Number(data.prices[7][1]) }
-                ];
+                const coinHistory: IChartDataConverted[] = [];
+                data.prices.map(price => coinHistory.push({
+                    time: convertDate(price[0]),
+                    value: Number(price[1])
+                }));
+                console.log(coinHistory);
                 setData(coinHistory);
             
             } catch (error) {
@@ -78,6 +74,11 @@ function Chart() {
             bottomColor: 'rgba(78, 203, 113, 0.1)'
         });
         newSeries.setData(data);
+        
+        const lineSeries = chart.addLineSeries({
+            color: '#4ECB71'
+        });
+        lineSeries.setData(data);
 
         return () => {
             chart.remove(); // Clean up chart on component unmount
