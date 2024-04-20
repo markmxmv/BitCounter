@@ -6,6 +6,6 @@ function CoinList() {
     return (
         <>CoinList</>
     );
-};
+}
 
 export default CoinList;

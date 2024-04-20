@@ -30,7 +30,6 @@ function Chart() {
                     time: convertDate(price[0]),
                     value: Number(price[1])
                 }));
-                console.log(coinHistory);
                 setData(coinHistory);
             
             } catch (error) {

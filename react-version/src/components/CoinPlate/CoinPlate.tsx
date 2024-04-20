@@ -6,8 +6,7 @@ import { RootState } from "../../store/store";
 function CoinPlate() {
   const chosenCoin = useSelector((state: RootState) => state.chosenCoin);
   const coinList = useSelector((state: RootState) => state.coinList.list);
-  const coinData = coinList.find((el) => el.symbol === chosenCoin.symbol); // Use find instead of filter
-  console.log(coinData?.price_change_percentage_24h);
+  const coinData = coinList.find((el) => el.symbol === chosenCoin.symbol);
   if (!coinData) {
     return <div>Loading...</div>;
   }

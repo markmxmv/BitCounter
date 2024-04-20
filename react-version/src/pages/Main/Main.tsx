@@ -7,6 +7,7 @@ import { AppDispatch } from "../../store/store";
 import { loadCoinWebsite } from "../../store/chosenCoin.slice";
 import CoinList from "../../components/CoinList/CoinList";
 import Chart from "../../components/Chart/Chart";
+import SearchAndFavorites from "../../components/Search/SearchAndFavorites";
 
 function Main() {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,6 +23,7 @@ function Main() {
         <Chart/>
       </div>
       <div className={styles["bottom"]}>
+        <SearchAndFavorites/>
         <CoinList/>
       </div>
     </div>
