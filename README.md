@@ -1,3 +1,7 @@
+## Project status
+
+_Migrating from Vanilla JS to React.js_
+
 <img src="./static/Banner.png"/>
 
 ## What is BitCounter?
@@ -17,7 +21,3 @@ It uses CoinGecko API for fetching crypto markets data. Also it uses TradingView
 - The ability to add multiple portfolios to your account
 - Integrated AI helper
 - The ability to create a profile to which all your portfolio data will be linked. It allows you to use Bitcounter on many devices
-
-## Project status
-
-_Migrating from Vanilla JS to React.js_
